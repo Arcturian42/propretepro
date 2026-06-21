@@ -1,0 +1,353 @@
+@import "tailwindcss";
+
+/* ============================================================
+   PropretéPro — Design System
+   Bleu nuit premium + Vert émeraude + accents turquoise/mint
+   ============================================================ */
+
+@theme {
+  /* Brand palette */
+  --color-night-50: #eef3f8;
+  --color-night-100: #d4e0ec;
+  --color-night-200: #9fb6cc;
+  --color-night-300: #6a8bab;
+  --color-night-400: #3d5d7e;
+  --color-night-500: #1f3c5a;
+  --color-night-600: #14304b;
+  --color-night-700: #0d2540;
+  --color-night-800: #0a2036;
+  --color-night-900: #071c2f; /* Bleu nuit premium */
+  --color-night-950: #04101d;
+
+  /* Palette de marque unifiée — BLEU (cohérente avec la hero et l'autolaveuse).
+     Noms historiques conservés ; valeurs basculées en bleu. */
+  --color-emerald-pp: #0a84ff; /* Bleu électrique (accents, icônes, gradient) */
+  --color-emerald-deep: #0a5cb0; /* Bleu profond (texte/liens, AA ≥6:1 sur blanc) */
+  --color-teal-pp: #1e8fe6; /* Bleu accent (bordures, anneaux, icônes) */
+  --color-mint-pp: #5eead4; /* Accent mint (sur fonds foncés) */
+  --color-cyan-pp: #22d3ee;
+
+  --color-surface: #f8fafc; /* Fond clair */
+  --color-surface-2: #f1f5f9;
+  --color-line: #e2e8f0; /* Bordures douces */
+  --color-ink: #111827; /* Texte principal */
+  --color-muted-ink: #556070; /* Texte secondaire — AA sur fonds clairs et teintés (≥4.5:1) */
+
+  /* Fonts */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: var(--font-fraunces), var(--font-inter), ui-serif, Georgia, serif;
+  --font-mono: var(--font-mono), ui-monospace, "SF Mono", Menlo, monospace;
+
+  /* Radii */
+  --radius-card: 1.25rem;
+  --radius-pill: 999px;
+
+  /* Easing & motion */
+  --ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  :root {
+    --gradient-night: linear-gradient(135deg, #071c2f 0%, #0d2540 45%, #0a3a6b 100%);
+    --gradient-cta: linear-gradient(135deg, #0084ff 0%, #31b8ff 100%);
+    --glass-bg: rgba(255, 255, 255, 0.68);
+    --glass-border: rgba(255, 255, 255, 0.35);
+    --glass-shadow: 0 20px 60px rgba(15, 23, 42, 0.08);
+  }
+
+  * {
+    border-color: var(--color-line);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-surface);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-feature-settings: "cv11", "ss01";
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+    color: var(--color-night-900);
+  }
+
+  ::selection {
+    background-color: var(--color-teal-pp);
+    color: #04101d;
+  }
+}
+
+@layer components {
+  /* Glassmorphism card — usage sobre */
+  .glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+  }
+
+  .glass-dark {
+    background: rgba(7, 28, 47, 0.55);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  /* Gradient text */
+  .text-gradient {
+    background: linear-gradient(120deg, #0084ff 0%, #31b8ff 60%, #78e6d0 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Premium gradient border card */
+  .gradient-border {
+    position: relative;
+    background: white;
+    border-radius: var(--radius-card);
+  }
+  .gradient-border::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(20, 184, 166, 0.5), rgba(34, 211, 238, 0.15), rgba(15, 118, 110, 0.4));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  /* Gradient backgrounds as utilities (background-image, not background-color) */
+  .bg-cta { background-image: var(--gradient-cta); }
+  .bg-night-grad { background-image: var(--gradient-night); }
+
+  /* Police Fustat (titres / brand) — référence la variable next/font */
+  .font-fustat { font-family: var(--font-fustat), ui-sans-serif, system-ui, sans-serif; }
+
+  /* ===== Liquid Glass ===== */
+  /* Navbar verre dépoli "fort" */
+  .glass-nav {
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(50px);
+    -webkit-backdrop-filter: blur(50px);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0px 4px 4px 0px rgba(255, 255, 255, 0.25);
+  }
+  /* CTA bleu électrique vitré */
+  .glass-cta {
+    background: rgba(0, 132, 255, 0.82);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    box-shadow: inset 0px 4px 4px 0px rgba(255, 255, 255, 0.35);
+    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .glass-cta:hover {
+    transform: scale(1.02) translateY(-1px);
+    box-shadow: inset 0px 4px 4px 0px rgba(255, 255, 255, 0.35), 0px 18px 40px rgba(0, 132, 255, 0.25);
+  }
+  /* Bouton verre secondaire */
+  .glass-soft {
+    background: rgba(255, 255, 255, 0.45);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.3s;
+  }
+  .glass-soft:hover { transform: translateY(-1px); border-color: rgba(0, 132, 255, 0.4); }
+
+  /* Texte dégradé bleu liquid glass (mot mis en avant) */
+  .text-glass-blue {
+    background: linear-gradient(90deg, #0084ff, #31b8ff, #78e6d0);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}
+
+/* ===== Animations autolaveuse industrielle (hero) — cinématique premium ===== */
+@keyframes industrialFloat {
+  0% { transform: translateY(0) scale(1.08); }
+  100% { transform: translateY(-6px) scale(1.08); }
+}
+.animate-industrial-float { animation: industrialFloat 5s ease-in-out infinite alternate; }
+
+/* Respiration de l'ombre portée (scale + opacité) */
+@keyframes shadow-breathe {
+  0%, 100% { transform: scaleX(1); opacity: 0.16; }
+  50% { transform: scaleX(0.94); opacity: 0.12; }
+}
+.animate-shadow-breathe { transform-box: fill-box; transform-origin: center; animation: shadow-breathe 5s ease-in-out infinite; }
+
+/* Balayage de lumière (light sweep) très subtil sur la carrosserie */
+@keyframes light-sweep {
+  0% { transform: translateX(-60%); }
+  100% { transform: translateX(160%); }
+}
+.animate-light-sweep { animation: light-sweep 6s ease-in-out infinite; }
+
+/* Reflet de sol qui glisse de 2-3px */
+@keyframes reflection-shift {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(3px); }
+}
+.animate-reflection { animation: reflection-shift 6s ease-in-out infinite; }
+
+/* Surbrillance discrète sous la brosse (pas de brosse cartoon) */
+@keyframes underbody-glow {
+  0%, 100% { opacity: 0.25; }
+  50% { opacity: 0.5; }
+}
+.animate-underbody { animation: underbody-glow 4s ease-in-out infinite; }
+
+/* Titre : révélation flou → net, ligne par ligne */
+@keyframes blur-in {
+  from { opacity: 0; filter: blur(12px); transform: translateY(10px); }
+  to { opacity: 1; filter: blur(0); transform: translateY(0); }
+}
+.animate-blur-in { animation: blur-in 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+
+/* Reflet lumineux qui balaie le CTA au hover */
+.cta-sheen { position: relative; overflow: hidden; }
+.cta-sheen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 35%, rgba(255, 255, 255, 0.55) 48%, transparent 62%);
+  transform: translateX(-120%);
+  transition: transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+  pointer-events: none;
+}
+.cta-sheen:hover::after { transform: translateX(120%); }
+
+@layer components {
+  /* placeholder to keep @layer block valid after raw keyframes */
+  .lg-noop { display: contents; }
+
+  .btn-primary {
+    background: var(--gradient-cta);
+    color: white;
+    box-shadow: 0 10px 30px rgba(15, 118, 110, 0.25);
+  }
+  .btn-primary:hover {
+    box-shadow: 0 14px 38px rgba(20, 184, 166, 0.35);
+  }
+}
+
+/* Editorial prose for article bodies */
+@layer components {
+  .prose-pp {
+    color: var(--color-night-800);
+    font-size: 1.05rem;
+    line-height: 1.75;
+  }
+  .prose-pp h2 {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-top: 2.5rem;
+    margin-bottom: 0.75rem;
+    scroll-margin-top: 6rem;
+  }
+  .prose-pp h3 {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-top: 1.75rem;
+    margin-bottom: 0.5rem;
+    scroll-margin-top: 6rem;
+  }
+  .prose-pp p { margin-bottom: 1rem; }
+  .prose-pp a {
+    color: var(--color-emerald-deep);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-color: rgba(20, 184, 166, 0.4);
+  }
+  .prose-pp a:hover { text-decoration-color: var(--color-teal-pp); }
+  .prose-pp ul { margin: 1rem 0; padding-left: 0; list-style: none; }
+  .prose-pp ul > li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .prose-pp ul > li::before {
+    content: "";
+    position: absolute;
+    left: 0.25rem;
+    top: 0.65rem;
+    width: 0.4rem;
+    height: 0.4rem;
+    border-radius: 999px;
+    background: var(--color-teal-pp);
+  }
+  .prose-pp strong { color: var(--color-night-900); font-weight: 600; }
+  .prose-pp blockquote {
+    border-left: 3px solid var(--color-emerald-pp);
+    padding-left: 1.25rem;
+    font-style: italic;
+    color: var(--color-night-700);
+    margin: 1.5rem 0;
+  }
+
+  .section-heading {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--color-night-900);
+  }
+}
+
+/* Subtle ambient blob animation for hero backgrounds */
+@keyframes drift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(20px, -28px) scale(1.06); }
+}
+.animate-drift { animation: drift 16s var(--ease-spring) infinite; }
+
+@keyframes drift-slow {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-24px, 18px) scale(1.08); }
+}
+.animate-drift-slow { animation: drift-slow 22s var(--ease-spring) infinite; }
+
+/* Entrée du contenu hero en CSS pur (visible sans JS — préserve le LCP/SEO) */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: none; }
+}
+.rise { animation: rise 0.6s var(--ease-spring) both; }
+
+/* Float for hero cards */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.animate-float { animation: float 7s var(--ease-spring) infinite; }
+
+/* Pulsing status dot */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.7); }
+}
+.animate-pulse-dot { animation: pulse-dot 2s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
