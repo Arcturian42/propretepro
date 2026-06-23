@@ -4,6 +4,7 @@ import { SchemaMarkup } from "@/components/seo/SchemaMarkup";
 import { articleSchema, faqSchema, breadcrumbSchema } from "@/lib/schema";
 import { ArticleLayout } from "@/components/layout/ArticleLayout";
 import { AnswerBox, KeyTakeaways, DefinitionBox, FactTable, InfoCallout, PullQuote } from "@/components/sections/GeoBlocks";
+import { SourcesBox } from "@/components/sections/SourcesBox";
 import { FAQSection } from "@/components/sections/FAQSection";
 import { RelatedArticles } from "@/components/sections/RelatedArticles";
 import { Button } from "@/components/ui/Button";
@@ -398,6 +399,34 @@ export default function Page() {
           <li>Comparer le salaire de base versé au minimum conventionnel applicable.</li>
           <li>Ajouter les primes et majorations dues, puis contrôler le bulletin.</li>
         </ul>
+
+        {/* Sources externes faisant autorité (citabilité GEO + E-E-A-T).
+            NB : liens vers les portails officiels de référence — affiner vers les fiches
+            profondes (avenant salaires étendu, page IDCC 3043) une fois les URLs confirmées. */}
+        <SourcesBox
+          sources={[
+            {
+              label: "Convention collective nationale des entreprises de propreté (IDCC 3043)",
+              href: "https://www.legifrance.gouv.fr/liste/idcc",
+              publisher: "Légifrance",
+            },
+            {
+              label: "Montant du SMIC horaire et mensuel",
+              href: "https://www.service-public.fr/particuliers/vosdroits/F2300",
+              publisher: "service-public.fr",
+            },
+            {
+              label: "Cotisations sociales et coût du travail",
+              href: "https://boss.gouv.fr",
+              publisher: "Bulletin officiel de la Sécurité sociale",
+            },
+            {
+              label: "Taux de cotisations et déclarations employeur",
+              href: "https://www.urssaf.fr",
+              publisher: "URSSAF",
+            },
+          ]}
+        />
 
         <div className="not-prose my-8 rounded-2xl border border-line bg-surface-2 p-6">
           <p className="font-display text-lg font-semibold text-night-900">

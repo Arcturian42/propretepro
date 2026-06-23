@@ -47,6 +47,11 @@ export const metadata: Metadata = {
   creator: SITE.name,
   publisher: SITE.name,
   formatDetection: { telephone: false },
+  alternates: {
+    types: {
+      "application/rss+xml": [{ url: "/feed.xml", title: `${SITE.name} — Flux RSS` }],
+    },
+  },
   openGraph: {
     type: "website",
     locale: SITE.locale,

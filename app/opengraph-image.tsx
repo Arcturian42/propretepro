@@ -78,7 +78,7 @@ export default function OpengraphImage() {
               fontWeight: 600,
             }}
           >
-            propretepro.com
+            propretepro.fr
           </div>
         </div>
       </div>

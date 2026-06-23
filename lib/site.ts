@@ -5,14 +5,14 @@
 
 export const SITE = {
   name: "PropretéPro",
-  domain: "propretepro.com",
-  url: "https://propretepro.com",
+  domain: "propretepro.fr",
+  url: "https://propretepro.fr",
   tagline: "Le média des dirigeants de la propreté",
   description:
     "Le média qui aide les dirigeants d'entreprises de nettoyage à piloter leur rentabilité : réglementation et paie (IDCC 3043), tarifs et prix du nettoyage, coût de revient.",
   locale: "fr_FR",
   language: "fr",
-  email: "contact@propretepro.com",
+  email: "contact@propretepro.fr",
   twitter: "@propretepro",
   foundingYear: 2026,
 } as const;
