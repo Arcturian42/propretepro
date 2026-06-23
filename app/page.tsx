@@ -100,7 +100,7 @@ export default function HomePage() {
         </section>
       )}
 
-      {/* Dual CTA: lead magnet + calculator */}
+      {/* Dual CTA: guide pilier + newsletter */}
       <section className="mx-auto mt-16 max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-5 lg:grid-cols-2">
           <Reveal className="h-full">

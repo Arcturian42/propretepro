@@ -1,5 +1,5 @@
 /**
- * Endpoint de capture de leads (newsletter + téléchargement de modèle).
+ * Endpoint de capture d'inscriptions à la newsletter.
  *
  * V2 : valide l'email côté serveur et renvoie un statut. La persistance réelle
  * (ESP/CRM type Brevo, Mailchimp, HubSpot) se branche ici via une variable
