@@ -11,6 +11,7 @@ import {
   InfoCallout,
 } from "@/components/sections/GeoBlocks";
 import { FAQSection } from "@/components/sections/FAQSection";
+import { SourcesBox } from "@/components/sections/SourcesBox";
 import { RelatedArticles } from "@/components/sections/RelatedArticles";
 import { Button } from "@/components/ui/Button";
 import { AUTHORS, type Article } from "@/lib/content";
@@ -33,7 +34,9 @@ const TOC = [
   { id: "en-bref", label: "En bref" },
   { id: "prix-lot", label: "Prix par lot et par mois" },
   { id: "facteurs", label: "Facteurs qui influencent le prix" },
+  { id: "options", label: "Conteneurs et options" },
   { id: "charges", label: "Comment le coût est réparti" },
+  { id: "optimiser", label: "Maîtriser le budget" },
   { id: "definition", label: "Parties communes" },
   { id: "faq", label: "Questions fréquentes" },
 ];
@@ -76,6 +79,16 @@ const FAQ = [
     question: "Comment le coût du nettoyage est-il réparti entre copropriétaires ?",
     answer:
       "Le coût du nettoyage des parties communes est intégré aux charges de copropriété et réparti entre les copropriétaires selon les tantièmes (quotes-parts) figurant dans le règlement de copropriété, en fonction de l'usage de chaque partie commune. C'est pourquoi raisonner « par lot et par mois » donne un repère utile pour comparer une copropriété à une autre.",
+  },
+  {
+    question: "La sortie des poubelles est-elle incluse dans le nettoyage de copropriété ?",
+    answer:
+      "Pas toujours. La sortie et la rentrée des conteneurs, ainsi que le nettoyage et la désinfection du local poubelles, sont fréquemment facturés en supplément de l'entretien courant, car ils impliquent des passages supplémentaires calés sur le calendrier de collecte. Vérifiez précisément ce qui est inclus dans le forfait avant de comparer deux devis.",
+  },
+  {
+    question: "Comment réduire le coût du nettoyage des parties communes ?",
+    answer:
+      "Ajustez la fréquence au passage réel de l'immeuble, distinguez l'entretien courant des prestations périodiques (vitrerie, lessivage) facturées à part, mutualisez si vous gérez plusieurs immeubles, et mettez le contrat en concurrence sur la base d'un cahier des charges clair. La fréquence reste le premier levier : passer de 5 à 3 passages hebdomadaires réduit nettement la facture.",
   },
 ];
 
@@ -223,6 +236,27 @@ export default function Page() {
           </li>
         </ul>
 
+        <h2 id="options">Conteneurs et prestations en option</h2>
+        <p>
+          Au-delà de l&apos;entretien courant, plusieurs prestations sont souvent facturées à part.
+          Les chiffrer séparément évite les mauvaises surprises et fiabilise la comparaison des devis.
+        </p>
+        <FactTable
+          caption="Prestations en option d'une copropriété (HT, indicatif) — 2026"
+          headers={["Prestation", "Tarif indicatif", "Périodicité"]}
+          rows={[
+            ["Sortie / rentrée des conteneurs", "30 – 120 €/mois", "Selon le calendrier de collecte"],
+            ["Nettoyage et désinfection du local poubelles", "20 – 60 €/mois", "Hebdomadaire"],
+            ["Vitrerie complète des communs", "1 – 3 €/m²", "Trimestrielle"],
+            ["Lessivage / décapage des sols", "2 – 4 €/m²", "1 à 2×/an"],
+            ["Nettoyage de la cage d'escalier seule", "Voir le détail", "Variable"],
+          ]}
+        />
+        <p>
+          Pour le détail d&apos;une prestation ciblée, voir le{" "}
+          <a href="/tarifs/prix-nettoyage-cage-escalier">prix du nettoyage de cage d&apos;escalier</a>.
+        </p>
+
         <KeyTakeaways
           items={[
             "Comptez 8 à 25 € par lot et par mois HT selon la fréquence et le standing.",
@@ -248,6 +282,23 @@ export default function Page() {
           et pour décortiquer le taux facturé, le{" "}
           <a href="/tarifs/tarif-horaire-nettoyage">tarif horaire du nettoyage</a>.
         </p>
+
+        <h2 id="optimiser">Comment maîtriser le budget</h2>
+        <ul>
+          <li><strong>Caler la fréquence sur le passage réel</strong> de l&apos;immeuble plutôt que sur une habitude.</li>
+          <li><strong>Distinguer entretien courant et prestations périodiques</strong> pour ne payer ces dernières qu&apos;au besoin.</li>
+          <li><strong>Mutualiser</strong> si le syndic gère plusieurs immeubles proches.</li>
+          <li><strong>Mettre en concurrence</strong> sur la base d&apos;un{" "}
+            <a href="/developpement/cahier-des-charges-nettoyage">cahier des charges clair</a> pour obtenir des devis comparables.</li>
+        </ul>
+
+        {/* Sources d'autorité (copropriété) pour la citabilité GEO + E-E-A-T. */}
+        <SourcesBox
+          sources={[
+            { label: "La copropriété : fonctionnement et charges", href: "https://www.service-public.fr/particuliers/vosdroits/N13692", publisher: "service-public.fr" },
+            { label: "Information sur le logement et la copropriété", href: "https://www.anil.org", publisher: "ANIL" },
+          ]}
+        />
 
         <h2 id="definition">Parties communes, en clair</h2>
         <DefinitionBox term="Parties communes (copropriété)">

@@ -11,6 +11,7 @@ import {
   InfoCallout,
 } from "@/components/sections/GeoBlocks";
 import { FAQSection } from "@/components/sections/FAQSection";
+import { SourcesBox } from "@/components/sections/SourcesBox";
 import { RelatedArticles } from "@/components/sections/RelatedArticles";
 import { Button } from "@/components/ui/Button";
 import { AUTHORS, type Article } from "@/lib/content";
@@ -35,6 +36,8 @@ const TOC = [
   { id: "composition", label: "Ce qui compose le tarif" },
   { id: "ecarts", label: "Écarts selon région et prestation" },
   { id: "facteurs", label: "Facteurs qui influencent le prix" },
+  { id: "exemple", label: "Exemple de calcul" },
+  { id: "optimiser", label: "Obtenir un tarif juste" },
   { id: "definition", label: "Taux horaire facturé" },
   { id: "faq", label: "Questions fréquentes" },
 ];
@@ -77,6 +80,21 @@ const FAQ = [
     question: "Le tarif horaire est-il indiqué hors taxes ?",
     answer:
       "Oui, les tarifs horaires communiqués par les entreprises de nettoyage sont quasi systématiquement exprimés hors taxes. La TVA au taux normal de 20 % s'ajoute pour obtenir le prix réellement facturé. Pensez à raisonner sur la même base (HT) lorsque vous comparez plusieurs devis.",
+  },
+  {
+    question: "Comment passer du tarif horaire au prix au m² ?",
+    answer:
+      "On convertit le tarif horaire en prix au m² via la cadence de nettoyage, c'est-à-dire la surface qu'un agent traite en une heure (souvent 200 à 400 m²/h selon le type de local et la prestation). Prix au m² = tarif horaire ÷ cadence. Par exemple, un tarif de 23 €/h avec une cadence de 300 m²/h donne environ 0,077 € par m² et par passage. C'est la logique qui relie le tarif horaire et le prix au m² des bureaux.",
+  },
+  {
+    question: "Comment négocier un tarif horaire de nettoyage ?",
+    answer:
+      "Le levier le plus efficace est le volume : un engagement sur un volume horaire mensuel élevé permet d'obtenir un tarif unitaire plus bas. Privilégiez aussi les horaires de jour (pas de majoration), fournissez l'accès facilité, regroupez les fréquences et acceptez une durée d'engagement raisonnable. À l'inverse, exiger des horaires décalés ou un contrôle qualité renforcé fait monter le tarif.",
+  },
+  {
+    question: "Quel est le tarif horaire d'une femme de ménage pour une entreprise ?",
+    answer:
+      "Pour l'entretien courant de locaux professionnels, le tarif horaire facturé par une entreprise de nettoyage se situe en bas de fourchette, soit environ 18 à 24 € HT de l'heure. Ce montant correspond à une prestation standard en horaires de jour ; il ne doit pas être confondu avec le salaire net de l'agent, nettement inférieur.",
   },
 ];
 
@@ -251,6 +269,46 @@ export default function Page() {
           </li>
         </ul>
 
+        <h2 id="exemple">Exemple : du coût de revient au tarif horaire</h2>
+        <p>
+          La meilleure façon de juger un tarif est de le reconstruire depuis le{" "}
+          <a href="/tarifs/cout-revient-agent-proprete">coût de revient</a>. Partons d&apos;un agent
+          dont le coût salarial chargé est d&apos;environ 17 €/h. On empile ensuite les postes que le
+          prestataire doit financer :
+        </p>
+        <FactTable
+          caption="Reconstruction d'un tarif horaire à partir du coût de revient (exemple indicatif HT)"
+          headers={["Poste", "Base", "Montant"]}
+          rows={[
+            ["Salaire chargé de l'agent", "Coût de revient", "17,00 €"],
+            ["Encadrement, congés, absences", "+ 12 %", "2,04 €"],
+            ["Fournitures et matériel", "+ 7 %", "1,19 €"],
+            ["Frais de structure", "+ 10 %", "1,70 €"],
+            ["Sous-total coût", "—", "21,93 €"],
+            ["Marge", "+ 8 %", "1,75 €"],
+            ["Tarif horaire facturé", "—", "≈ 23,70 € HT"],
+          ]}
+        />
+        <p>
+          Un tarif proposé nettement en dessous de ce seuil doit alerter : soit le prestataire
+          sous-estime ses coûts (et dégradera la qualité ou ne tiendra pas), soit la prestation
+          décrite n&apos;est pas la même. C&apos;est exactement ce que révèle une{" "}
+          <a href="/tarifs/comment-comparer-devis-nettoyage">comparaison rigoureuse des devis</a>.
+        </p>
+
+        <h2 id="optimiser">Comment obtenir un tarif horaire juste</h2>
+        <p>
+          Côté donneur d&apos;ordre, plusieurs leviers permettent d&apos;obtenir un bon tarif sans
+          sacrifier la qualité :
+        </p>
+        <ul>
+          <li><strong>Jouer sur le volume</strong> : un volume horaire mensuel élevé fait baisser le tarif unitaire.</li>
+          <li><strong>Privilégier les horaires de jour</strong> : éviter nuit, dimanche et fériés qui déclenchent des majorations.</li>
+          <li><strong>Faciliter l&apos;accès</strong> : moins de temps improductif, c&apos;est un meilleur tarif.</li>
+          <li><strong>Cadrer le besoin</strong> : un cahier des charges clair évite les marges de sécurité que le prestataire intègre face à l&apos;incertitude.</li>
+          <li><strong>S&apos;engager sur la durée</strong> : un contrat pluriannuel rassure le prestataire et se négocie mieux.</li>
+        </ul>
+
         <KeyTakeaways
           items={[
             "Le tarif horaire facturé va de 18 à 35 €/h HT selon la prestation et la région.",
@@ -268,6 +326,15 @@ export default function Page() {
           du prestataire. Il se distingue du salaire horaire de l&apos;agent, nettement inférieur,
           et constitue la base de tout chiffrage, qu&apos;il soit présenté au m² ou au forfait.
         </DefinitionBox>
+
+        {/* Sources d'autorité pour la base de coût (citabilité GEO + E-E-A-T). */}
+        <SourcesBox
+          sources={[
+            { label: "Indice du coût horaire du travail (ICHT)", href: "https://www.insee.fr", publisher: "INSEE" },
+            { label: "Taux de cotisations sociales employeur", href: "https://www.urssaf.fr", publisher: "URSSAF" },
+            { label: "Montant du SMIC horaire", href: "https://www.service-public.fr/particuliers/vosdroits/F2300", publisher: "service-public.fr" },
+          ]}
+        />
 
         <div className="not-prose my-8 rounded-2xl border border-line bg-surface-2 p-6">
           <p className="font-display text-lg font-semibold text-night-900">
