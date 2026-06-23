@@ -1,0 +1,20 @@
+# ai.txt — PropretéPro (https://propretepro.fr)
+# Standard émergent d'accès et de citation pour les moteurs IA.
+# Politique : citation autorisée avec attribution ; entraînement de modèles non autorisé.
+
+Site: PropretéPro
+Url: https://propretepro.fr
+Contact: contact@propretepro.fr
+Description: Média B2B indépendant pour les dirigeants d'entreprises de propreté en France — réglementation (IDCC 3043), paie, tarifs et rentabilité du nettoyage.
+Language: fr
+
+# Ressources structurées pour les agents IA
+Summary: https://propretepro.fr/ai/summary.json
+Faq: https://propretepro.fr/ai/faq.json
+Llms: https://propretepro.fr/llms.txt
+Sitemap: https://propretepro.fr/sitemap.xml
+
+# Usage
+Allow-citation: yes
+Attribution-required: yes
+Allow-training: no
