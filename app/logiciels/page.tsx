@@ -1,14 +1,38 @@
 import type { Metadata } from "next";
 import { buildMetadata } from "@/lib/seo";
 import { SchemaMarkup } from "@/components/seo/SchemaMarkup";
-import { breadcrumbSchema } from "@/lib/schema";
+import { breadcrumbSchema, faqSchema } from "@/lib/schema";
 import { SiloHub } from "@/components/sections/SiloHub";
+import { FAQSection } from "@/components/sections/FAQSection";
 import { InfoCallout } from "@/components/sections/GeoBlocks";
 import { articlesBySilo } from "@/lib/content";
 
 const CRUMBS = [
   { name: "Accueil", href: "/" },
   { name: "Logiciels", href: "/logiciels" },
+];
+
+const FAQ = [
+  {
+    question: "Quel logiciel choisir pour une entreprise de nettoyage ?",
+    answer:
+      "Les fonctions clés sont le planning des chantiers, le pointage des agents (souvent GPS), les devis-facturation et le contrôle qualité. Le bon choix dépend de la taille de l'entreprise et du nombre de sites. Nous recommandons en 2026 une plateforme tout-en-un comme Proprely, à tester via son essai gratuit.",
+  },
+  {
+    question: "À quoi sert un logiciel de pointage pour la propreté ?",
+    answer:
+      "Il fiabilise le suivi des heures réellement effectuées sur chaque site (pointage horodaté, parfois géolocalisé), ce qui sécurise la paie, la facturation et le contrôle qualité. C'est un levier direct de marge dans une activité multi-sites à forte rotation.",
+  },
+  {
+    question: "Un logiciel de propreté est-il conforme au RGPD ?",
+    answer:
+      "Le pointage et la géolocalisation des agents impliquent des données personnelles : l'outil doit respecter le RGPD (information des salariés, finalité proportionnée, durée de conservation limitée). Vérifiez les garanties de l'éditeur et l'hébergement des données.",
+  },
+  {
+    question: "Comment comparer les logiciels de nettoyage ?",
+    answer:
+      "Comparez la couverture fonctionnelle (planning, pointage, devis, qualité), l'ergonomie mobile pour les agents, l'intégration à la paie et à la facturation électronique, le support et le prix. Testez toujours via un essai gratuit avant de vous engager.",
+  },
 ];
 
 export const metadata: Metadata = buildMetadata({
@@ -28,7 +52,7 @@ export default function LogicielsHub() {
   const articles = articlesBySilo("logiciels");
   return (
     <>
-      <SchemaMarkup schema={breadcrumbSchema(CRUMBS)} />
+      <SchemaMarkup schema={[breadcrumbSchema(CRUMBS), faqSchema(FAQ)]} />
       <SiloHub
         crumbs={CRUMBS}
         kicker="Logiciels & outils"
@@ -44,6 +68,9 @@ export default function LogicielsHub() {
           </InfoCallout>
         </div>
       </SiloHub>
+      <section className="mx-auto max-w-3xl px-4 pb-16 sm:px-6">
+        <FAQSection items={FAQ} title="Logiciels de propreté : questions fréquentes" />
+      </section>
     </>
   );
 }

@@ -1,14 +1,38 @@
 import type { Metadata } from "next";
 import { buildMetadata } from "@/lib/seo";
 import { SchemaMarkup } from "@/components/seo/SchemaMarkup";
-import { breadcrumbSchema } from "@/lib/schema";
+import { breadcrumbSchema, faqSchema } from "@/lib/schema";
 import { SiloHub } from "@/components/sections/SiloHub";
+import { FAQSection } from "@/components/sections/FAQSection";
 import { InfoCallout } from "@/components/sections/GeoBlocks";
 import { articlesBySilo } from "@/lib/content";
 
 const CRUMBS = [
   { name: "Accueil", href: "/" },
   { name: "Tarifs", href: "/tarifs" },
+];
+
+const FAQ = [
+  {
+    question: "Combien coûte le nettoyage de bureaux au m² en 2026 ?",
+    answer:
+      "Le prix du nettoyage de bureaux se situe généralement entre 0,30 et 0,60 € HT par m² et par passage en France, selon la fréquence, la surface, le type de locaux et la zone géographique. Pour de grandes surfaces ou des fréquences élevées, le prix au m² baisse.",
+  },
+  {
+    question: "Comment est calculé le tarif horaire d'une prestation de nettoyage ?",
+    answer:
+      "Le tarif horaire facturé part du coût horaire chargé réel d'un agent (salaire conventionnel, charges patronales, congés, absentéisme, encadrement, matériel), auquel s'ajoutent les frais de structure et la marge. Il se situe le plus souvent dans une fourchette indicative de 22 à 30 € HT de l'heure.",
+  },
+  {
+    question: "Pourquoi les devis de nettoyage varient-ils autant ?",
+    answer:
+      "Parce que les prestations, fréquences et surfaces de référence diffèrent d'un devis à l'autre. À périmètre égal, les écarts viennent du coût de main-d'œuvre, du niveau de qualité et des prestations incluses. Un cahier des charges commun rend les devis réellement comparables.",
+  },
+  {
+    question: "Les prix affichés sont-ils hors taxes ?",
+    answer:
+      "Oui. Les fourchettes publiées sont des ordres de grandeur indicatifs hors taxes (HT) pour le marché français en 2026. Le nettoyage professionnel relève en principe du taux normal de TVA à 20 %.",
+  },
 ];
 
 export const metadata: Metadata = buildMetadata({
@@ -29,7 +53,7 @@ export default function TarifsHub() {
   const articles = articlesBySilo("tarifs");
   return (
     <>
-      <SchemaMarkup schema={breadcrumbSchema(CRUMBS)} />
+      <SchemaMarkup schema={[breadcrumbSchema(CRUMBS), faqSchema(FAQ)]} />
       <SiloHub
         crumbs={CRUMBS}
         kicker="Tarifs & prix"
@@ -46,6 +70,9 @@ export default function TarifsHub() {
           </InfoCallout>
         </div>
       </SiloHub>
+      <section className="mx-auto max-w-3xl px-4 pb-16 sm:px-6">
+        <FAQSection items={FAQ} title="Prix du nettoyage : questions fréquentes" />
+      </section>
     </>
   );
 }
