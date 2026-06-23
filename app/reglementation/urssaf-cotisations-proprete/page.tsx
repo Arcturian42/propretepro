@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { buildMetadata } from "@/lib/seo";
 import { SchemaMarkup } from "@/components/seo/SchemaMarkup";
+import { SourcesBox } from "@/components/sections/SourcesBox";
+import { SOURCES } from "@/lib/sources";
 import { articleSchema, faqSchema, breadcrumbSchema } from "@/lib/schema";
 import { ArticleLayout } from "@/components/layout/ArticleLayout";
 import { AnswerBox, KeyTakeaways, DefinitionBox, FactTable, InfoCallout } from "@/components/sections/GeoBlocks";
@@ -304,6 +306,8 @@ export default function Page() {
           <a href="/reglementation/grille-salaire-proprete-2026">grille de salaire en vigueur</a>{" "}
           constitue la première ligne de défense en cas de contrôle, avec une DSN cohérente.
         </p>
+
+        <SourcesBox sources={SOURCES.cotisations} />
 
         <div className="not-prose my-8 rounded-2xl border border-line bg-surface-2 p-6">
           <p className="font-display text-lg font-semibold text-night-900">

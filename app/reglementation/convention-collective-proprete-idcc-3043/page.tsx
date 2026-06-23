@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { buildMetadata } from "@/lib/seo";
 import { SchemaMarkup } from "@/components/seo/SchemaMarkup";
+import { SourcesBox } from "@/components/sections/SourcesBox";
+import { SOURCES } from "@/lib/sources";
 import { articleSchema, faqSchema, breadcrumbSchema } from "@/lib/schema";
 import { ArticleLayout } from "@/components/layout/ArticleLayout";
 import { AnswerBox, KeyTakeaways, DefinitionBox, FactTable, InfoCallout } from "@/components/sections/GeoBlocks";
@@ -402,6 +404,8 @@ export default function Page() {
           mais un transfert qui s&apos;applique : l&apos;<strong>annexe 7</strong> impose la reprise du
           contrat par l&apos;entreprise entrante, comme détaillé dans la section précédente.
         </p>
+
+        <SourcesBox sources={SOURCES.conventionGenerale} />
 
         <div className="not-prose my-8 rounded-2xl border border-line bg-surface-2 p-6">
           <p className="font-display text-lg font-semibold text-night-900">
