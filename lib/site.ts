@@ -35,6 +35,11 @@ export const MAIN_NAV: NavItem[] = [
     description: "Prix du nettoyage de bureaux, tarifs horaires, fixer ses prix.",
   },
   {
+    label: "Développement",
+    href: "/developpement",
+    description: "Appels d'offres, cahier des charges, contrats et révision de prix.",
+  },
+  {
     label: "Blog",
     href: "/blog",
     description: "Guides et analyses pour piloter une entreprise de propreté.",
@@ -57,6 +62,14 @@ export const PILLARS = [
     accent: "teal",
     summary:
       "Prix au m², tarifs horaires, fin de chantier et copropriété : fixez des prix justes et défendez vos marges face aux donneurs d'ordre.",
+  },
+  {
+    label: "Développement & gestion",
+    href: "/developpement",
+    icon: "FileText",
+    accent: "cyan",
+    summary:
+      "Appels d'offres, cahier des charges, contrats et clause de révision de prix : remportez des marchés et sécurisez votre rentabilité dans la durée.",
   },
 ] as const;
 

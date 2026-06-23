@@ -10,14 +10,14 @@ import { RelatedArticles } from "@/components/sections/RelatedArticles";
 import { Button } from "@/components/ui/Button";
 import { AUTHORS, getArticle, ARTICLES } from "@/lib/content";
 
-const PATH = "/reglementation/repondre-appel-offres-nettoyage";
+const PATH = "/developpement/repondre-appel-offres-nettoyage";
 const COVER = "/covers/repondre-appel-offres-nettoyage.webp";
 const article = getArticle(PATH)!;
 const author = AUTHORS[article.authorSlug];
 
 const CRUMBS = [
   { name: "Accueil", href: "/" },
-  { name: "Réglementation", href: "/reglementation" },
+  { name: "Développement", href: "/developpement" },
   { name: "Répondre à un appel d'offres", href: PATH },
 ];
 
@@ -34,7 +34,7 @@ const TOC = [
 ];
 
 export const metadata: Metadata = buildMetadata({
-  title: "Répondre à un appel d'offres de nettoyage : méthode et modèle 2026",
+  title: "Répondre à un appel d'offres de nettoyage : la méthode complète 2026",
   description:
     "Méthode complète pour répondre à un appel d'offres de nettoyage : pièces du dossier (DC1, DC2, mémoire technique), chiffrage avec marge, reprise du personnel (Annexe 7) et clause de révision de prix.",
   path: PATH,
@@ -144,8 +144,8 @@ export default function Page() {
 
       <ArticleLayout
         crumbs={CRUMBS}
-        kicker="Réglementation · Développement"
-        title="Répondre à un appel d'offres de nettoyage : méthode et modèle"
+        kicker="Développement · Commercial"
+        title="Répondre à un appel d'offres de nettoyage : la méthode complète"
         intro="Pièces du dossier, mémoire technique, chiffrage avec marge et reprise du personnel : la marche à suivre pour décrocher un marché de nettoyage sans sacrifier votre rentabilité."
         author={author}
         datePublished={article.datePublished}
