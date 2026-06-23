@@ -371,6 +371,21 @@ export const ARTICLES: Article[] = [
     readMinutes: 8,
   },
   {
+    slug: "repondre-appel-offres-nettoyage",
+    href: "/reglementation/repondre-appel-offres-nettoyage",
+    silo: "reglementation",
+    siloLabel: "Réglementation",
+    title: "Répondre à un appel d'offres de nettoyage : méthode et modèle",
+    excerpt:
+      "Pièces du dossier (DC1, DC2, mémoire technique), chiffrage avec marge, reprise du personnel (Annexe 7) et clause de révision de prix : la méthode complète pour gagner un marché de nettoyage sans casser sa rentabilité.",
+    authorSlug: "marc-leroy",
+    datePublished: "2026-06-23",
+    dateModified: "2026-06-23",
+    readMinutes: 12,
+    badge: { label: "Guide pilier", tone: "night" },
+    popular: true,
+  },
+  {
     slug: "prix-remise-en-etat-nettoyage",
     href: "/tarifs/prix-remise-en-etat-nettoyage",
     silo: "tarifs",
