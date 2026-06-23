@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { buildMetadata } from "@/lib/seo";
 import { SchemaMarkup } from "@/components/seo/SchemaMarkup";
+import { SourcesBox } from "@/components/sections/SourcesBox";
+import { SOURCES } from "@/lib/sources";
 import { articleSchema, faqSchema, breadcrumbSchema } from "@/lib/schema";
 import { ArticleLayout } from "@/components/layout/ArticleLayout";
 import { AnswerBox, KeyTakeaways, DefinitionBox, FactTable, InfoCallout } from "@/components/sections/GeoBlocks";
@@ -347,6 +349,8 @@ export default function Page() {
           <li>Suivre le contingent annuel et déclencher la contrepartie en repos lorsqu&apos;il est dépassé.</li>
           <li>Intégrer le surcoût des majorations au calcul du coût chargé et du tarif facturé.</li>
         </ul>
+
+        <SourcesBox sources={SOURCES.tempsTravail} />
 
         <div className="not-prose my-8 rounded-2xl border border-line bg-surface-2 p-6">
           <p className="font-display text-lg font-semibold text-night-900">

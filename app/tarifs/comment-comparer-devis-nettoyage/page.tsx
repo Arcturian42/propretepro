@@ -34,7 +34,10 @@ const TOC = [
   { id: "en-bref", label: "En bref" },
   { id: "methode", label: "La méthode en 4 étapes" },
   { id: "grille", label: "La grille de comparaison" },
+  { id: "exemple", label: "Exemple : 3 devis comparés" },
   { id: "pieges", label: "Les pièges à éviter" },
+  { id: "qualite", label: "Au-delà du prix" },
+  { id: "questions", label: "Questions à poser" },
   { id: "definition", label: "Comparer à périmètre égal" },
   { id: "faq", label: "Questions fréquentes" },
 ];
@@ -78,6 +81,16 @@ const FAQ = [
     question: "Quels documents demander pour comparer des devis de nettoyage ?",
     answer:
       "Demandez le détail des prestations par zone et par fréquence, le temps de présence prévu, le tarif horaire de référence, la liste des consommables inclus, les conditions de remplacement en cas d'absence, la durée d'engagement et les conditions de révision de prix. Ces éléments rendent les devis réellement comparables et limitent les mauvaises surprises.",
+  },
+  {
+    question: "Qu'est-ce que la cadence de nettoyage et pourquoi est-elle décisive ?",
+    answer:
+      "La cadence est la surface qu'un agent traite en une heure (m²/h). C'est l'indicateur qui révèle un devis trop bas : une cadence de 250 à 350 m²/h est réaliste pour des bureaux ; au-delà de 400 m²/h, la prestation est forcément expédiée. Diviser la surface par le temps de présence annoncé permet de démasquer une offre sous-dimensionnée derrière un prix d'appel.",
+  },
+  {
+    question: "Au-delà du prix, quels critères pour choisir une entreprise de nettoyage ?",
+    answer:
+      "Regardez les références clients comparables, le taux d'encadrement, le plan de remplacement en cas d'absence, la démarche qualité (contrôles, indicateurs), les certifications ou labels du secteur (ex. Qualipropre), la politique RSE et les assurances. Une entreprise qui structure ces points tient mieux ses engagements dans la durée qu'un prestataire uniquement positionné sur le prix.",
   },
 ];
 
@@ -235,6 +248,30 @@ export default function Page() {
           ]}
         />
 
+        <h2 id="exemple">Exemple : trois devis comparés</h2>
+        <p>
+          Prenons un même besoin — <strong>500 m² de bureaux, 20 passages par mois</strong> — chiffré
+          par trois prestataires. Une fois ramenés à la même base, les écarts parlent d&apos;eux-mêmes.
+        </p>
+        <FactTable
+          caption="Trois devis pour 500 m² de bureaux, 20 passages/mois (HT, exemple indicatif)"
+          headers={["Critère", "Devis A", "Devis B", "Devis C"]}
+          rows={[
+            ["Forfait mensuel HT", "920 €", "1 300 €", "600 €"],
+            ["Temps de présence / passage", "2h00", "2h30", "1h00"],
+            ["Cadence implicite", "250 m²/h", "200 m²/h", "500 m²/h ⚠️"],
+            ["Prix au m² / passage", "0,092 €", "0,130 €", "0,060 €"],
+            ["Lecture", "Cohérent", "Complet mais cher", "Cadence intenable"],
+          ]}
+        />
+        <p>
+          Le <strong>devis C</strong> est le moins cher… parce qu&apos;il budgète <strong>deux fois
+          moins de temps</strong> : nettoyer 500 m² en une heure (500 m²/h) est intenable, la
+          prestation sera bâclée et générera des réclamations. Le <strong>devis B</strong> est le plus
+          complet mais sans doute surdimensionné. Le <strong>devis A</strong> offre le meilleur
+          rapport temps/prix : c&apos;est l&apos;offre cohérente, pas la moins chère.
+        </p>
+
         <h2 id="pieges">Les pièges à éviter</h2>
         <ul>
           <li>
@@ -263,6 +300,28 @@ export default function Page() {
           </li>
         </ul>
 
+        <h2 id="qualite">Au-delà du prix : qualité et fiabilité</h2>
+        <p>
+          Le prix ne dit rien de la capacité à tenir l&apos;engagement. À prix cohérent, ces critères
+          départagent les prestataires et font la différence sur la durée :
+        </p>
+        <ul>
+          <li><strong>Références clients</strong> comparables (taille, secteur, type de locaux).</li>
+          <li><strong>Taux d&apos;encadrement</strong> et plan de remplacement en cas d&apos;absence.</li>
+          <li><strong>Démarche qualité</strong> : contrôles, indicateurs, traçabilité du pointage.</li>
+          <li><strong>Certifications et labels</strong> du secteur (ex. Qualipropre) et démarche RSE.</li>
+          <li><strong>Assurances</strong> et solidité financière de l&apos;entreprise.</li>
+        </ul>
+
+        <h2 id="questions">Les questions à poser au prestataire</h2>
+        <ul>
+          <li>Combien d&apos;heures de présence par passage prévoyez-vous, et avec combien d&apos;agents ?</li>
+          <li>Les consommables (papier, savon, sacs) sont-ils inclus ?</li>
+          <li>Comment gérez-vous une absence pour assurer la continuité ?</li>
+          <li>Quel est l&apos;indice et la périodicité de la révision de prix ?</li>
+          <li>Quels contrôles qualité réalisez-vous, et à quelle fréquence ?</li>
+        </ul>
+
         <KeyTakeaways
           items={[
             "Imposez un cahier des charges commun : sans périmètre identique, aucune comparaison n'est valable.",
@@ -287,15 +346,14 @@ export default function Page() {
             Outillez votre comparaison
           </p>
           <p className="mt-1 text-sm text-muted-ink">
-            Un cahier des charges et un modèle de devis posent les bases d&apos;une mise en
-            concurrence saine.
+            Un cahier des charges clair pose les bases d&apos;une mise en concurrence saine.
           </p>
           <div className="mt-4 flex flex-wrap gap-3">
-            <Button href="/tarifs/comment-comparer-devis-nettoyage" variant="primary">
-              Comment comparer des devis
+            <Button href="/developpement/cahier-des-charges-nettoyage" variant="primary">
+              Rédiger un cahier des charges
             </Button>
-            <Button href="/reglementation/grille-salaire-proprete-2026" variant="secondary">
-              Voir la grille de salaire 2026
+            <Button href="/tarifs/tarif-horaire-nettoyage" variant="secondary">
+              Comprendre le tarif horaire
             </Button>
           </div>
         </div>

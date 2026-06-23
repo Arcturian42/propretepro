@@ -29,7 +29,7 @@ export const AUTHORS: Record<string, Author> = {
 export type Article = {
   slug: string;
   href: string;
-  silo: "reglementation" | "tarifs" | "logiciels";
+  silo: "reglementation" | "tarifs" | "logiciels" | "developpement";
   siloLabel: string;
   title: string;
   excerpt: string;
@@ -50,7 +50,7 @@ export const ARTICLES: Article[] = [
         siloLabel: "Réglementation",
         title: "Grille de salaire propreté 2026 (IDCC 3043)",
         excerpt:
-          "Tous les taux horaires minima par échelon et coefficient applicables en 2026 dans la branche propreté, avec tableau téléchargeable.",
+          "Tous les taux horaires minima par échelon et coefficient applicables en 2026 dans la branche propreté, avec tableau récapitulatif.",
         authorSlug: "claire-vidal",
         datePublished: "2026-01-08",
         dateModified: "2026-06-15",
@@ -369,6 +369,64 @@ export const ARTICLES: Article[] = [
     datePublished: "2026-04-05",
     dateModified: "2026-06-20",
     readMinutes: 8,
+  },
+  // === Développement & gestion ===
+  {
+    slug: "repondre-appel-offres-nettoyage",
+    href: "/developpement/repondre-appel-offres-nettoyage",
+    silo: "developpement",
+    siloLabel: "Développement",
+    title: "Répondre à un appel d'offres de nettoyage : la méthode complète",
+    excerpt:
+      "Pièces du dossier (DC1, DC2, mémoire technique), chiffrage avec marge, reprise du personnel (Annexe 7) et clause de révision de prix : la méthode complète pour gagner un marché de nettoyage sans casser sa rentabilité.",
+    authorSlug: "marc-leroy",
+    datePublished: "2026-06-23",
+    dateModified: "2026-06-23",
+    readMinutes: 12,
+    badge: { label: "Guide pilier", tone: "night" },
+    popular: true,
+  },
+  {
+    slug: "cahier-des-charges-nettoyage",
+    href: "/developpement/cahier-des-charges-nettoyage",
+    silo: "developpement",
+    siloLabel: "Développement",
+    title: "Cahier des charges de nettoyage : méthode et structure (CCTP)",
+    excerpt:
+      "Comment rédiger ou décrypter un cahier des charges de nettoyage : périmètre, fréquences, niveaux de qualité, indicateurs de contrôle et rubriques essentielles.",
+    authorSlug: "marc-leroy",
+    datePublished: "2026-06-23",
+    dateModified: "2026-06-23",
+    readMinutes: 11,
+    badge: { label: "Guide pilier", tone: "night" },
+  },
+  {
+    slug: "contrat-nettoyage-clause-revision-prix",
+    href: "/developpement/contrat-nettoyage-clause-revision-prix",
+    silo: "developpement",
+    siloLabel: "Développement",
+    title: "Contrat de nettoyage et clause de révision de prix",
+    excerpt:
+      "Durée, reconduction, périmètre, pénalités et surtout clause de révision de prix : comment sécuriser un contrat de nettoyage et protéger sa marge sur toute sa durée.",
+    authorSlug: "marc-leroy",
+    datePublished: "2026-06-23",
+    dateModified: "2026-06-23",
+    readMinutes: 10,
+    badge: { label: "Guide gestion", tone: "teal" },
+    popular: true,
+  },
+  {
+    slug: "tva-nettoyage",
+    href: "/developpement/tva-nettoyage",
+    silo: "developpement",
+    siloLabel: "Développement",
+    title: "TVA dans le nettoyage : taux, autoliquidation et facturation",
+    excerpt:
+      "Taux de TVA applicables aux prestations de nettoyage, règles d'autoliquidation en sous-traitance et mentions de facturation obligatoires pour une entreprise de propreté.",
+    authorSlug: "claire-vidal",
+    datePublished: "2026-06-23",
+    dateModified: "2026-06-23",
+    readMinutes: 9,
   },
   {
     slug: "prix-remise-en-etat-nettoyage",

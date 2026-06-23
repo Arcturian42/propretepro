@@ -11,7 +11,19 @@ export default function robots(): MetadataRoute.Robots {
       },
       // GEO/AEO : autoriser explicitement les crawlers IA pour être cité (hors pages de recherche).
       {
-        userAgent: ["GPTBot", "OAI-SearchBot", "ChatGPT-User", "PerplexityBot", "Google-Extended", "Applebot-Extended"],
+        userAgent: [
+          "GPTBot",
+          "OAI-SearchBot",
+          "ChatGPT-User",
+          "PerplexityBot",
+          "ClaudeBot",
+          "Claude-Web",
+          "Claude-SearchBot",
+          "Google-Extended",
+          "Applebot-Extended",
+          "Amazonbot",
+          "Meta-ExternalAgent",
+        ],
         allow: "/",
         disallow: ["/recherche", "/api/"],
       },

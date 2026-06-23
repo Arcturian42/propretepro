@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { buildMetadata } from "@/lib/seo";
 import { SchemaMarkup } from "@/components/seo/SchemaMarkup";
+import { SourcesBox } from "@/components/sections/SourcesBox";
+import { SOURCES } from "@/lib/sources";
 import { articleSchema, faqSchema, breadcrumbSchema } from "@/lib/schema";
 import { ArticleLayout } from "@/components/layout/ArticleLayout";
 import { AnswerBox, KeyTakeaways, DefinitionBox, FactTable, InfoCallout } from "@/components/sections/GeoBlocks";
@@ -336,6 +338,8 @@ export default function Page() {
           <li>Recourir à l&apos;avenant de complément d&apos;heures pour les besoins temporaires, dans la limite prévue.</li>
           <li>Respecter le régime des coupures et informer les salariés des postes à temps plein disponibles.</li>
         </ul>
+
+        <SourcesBox sources={SOURCES.tempsTravail} />
 
         <div className="not-prose my-8 rounded-2xl border border-line bg-surface-2 p-6">
           <p className="font-display text-lg font-semibold text-night-900">

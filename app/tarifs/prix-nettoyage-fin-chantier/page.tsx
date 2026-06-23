@@ -11,6 +11,7 @@ import {
   InfoCallout,
 } from "@/components/sections/GeoBlocks";
 import { FAQSection } from "@/components/sections/FAQSection";
+import { SourcesBox } from "@/components/sections/SourcesBox";
 import { RelatedArticles } from "@/components/sections/RelatedArticles";
 import { Button } from "@/components/ui/Button";
 import { AUTHORS, type Article } from "@/lib/content";
@@ -34,6 +35,8 @@ const TOC = [
   { id: "prix-m2", label: "Prix au m² selon l'état" },
   { id: "facteurs", label: "Facteurs qui influencent le prix" },
   { id: "tva", label: "Quelle TVA pour la fin de chantier ?" },
+  { id: "autoliquidation", label: "Sous-traitance et autoliquidation" },
+  { id: "checklist", label: "Préparer sa demande de devis" },
   { id: "definition", label: "Nettoyage fin de chantier" },
   { id: "faq", label: "Questions fréquentes" },
 ];
@@ -76,6 +79,16 @@ const FAQ = [
     question: "Comment obtenir un prix juste pour un nettoyage de fin de chantier ?",
     answer:
       "Faites visiter le site avant le devis : l'état réel (poussière, gravats, traces) conditionne tout. Précisez le niveau attendu (grossier, fin ou livraison), la surface, le nombre de pièces et de vitres, et la date butoir. Un devis établi sans visite ou très inférieur aux autres signale un risque de prestation incomplète.",
+  },
+  {
+    question: "Le nettoyage de fin de chantier en sous-traitance est-il soumis à l'autoliquidation de TVA ?",
+    answer:
+      "Oui. Lorsqu'il est sous-traité dans le cadre de travaux de bâtiment, le nettoyage de fin de chantier relève de l'autoliquidation : le sous-traitant facture hors taxe avec la mention « Autoliquidation », et c'est l'entreprise principale (donneur d'ordre assujetti) qui déclare la TVA. Cette règle vise le nettoyage prolongeant des travaux, pas l'entretien courant.",
+  },
+  {
+    question: "Quelles informations fournir pour obtenir un devis fiable ?",
+    answer:
+      "Communiquez la surface, le niveau de finition attendu (grossier, fin, livraison), le nombre et le type de vitres, la nature des sols, l'accessibilité (étage, ascenseur, co-activité) et la date butoir. Une visite préalable reste le meilleur moyen d'obtenir un prix réaliste et d'éviter les avenants.",
   },
 ];
 
@@ -255,6 +268,40 @@ export default function Page() {
           rapprochez-vous d&apos;un expert-comptable.
         </InfoCallout>
 
+        <h2 id="autoliquidation">Sous-traitance et autoliquidation de la TVA</h2>
+        <p>
+          Le nettoyage de fin de chantier est fréquemment <strong>sous-traité</strong> par
+          l&apos;entreprise générale ou un corps de métier. Dans ce cas, il relève de
+          l&apos;<strong>autoliquidation de la TVA</strong> applicable aux travaux de bâtiment : le
+          sous-traitant facture <strong>hors taxe</strong>, avec la mention « Autoliquidation », et
+          c&apos;est le donneur d&apos;ordre assujetti qui déclare la TVA. Cette règle vise le
+          nettoyage qui prolonge des travaux, et non l&apos;entretien courant. Le détail est dans
+          notre guide{" "}
+          <a href="/developpement/tva-nettoyage">TVA dans le nettoyage : taux, autoliquidation et facturation</a>.
+        </p>
+
+        <h2 id="checklist">Préparer sa demande de devis</h2>
+        <p>
+          Pour un chiffrage fiable et comparable, transmettez à chaque prestataire les mêmes
+          informations :
+        </p>
+        <ul>
+          <li><strong>Surface</strong> et nombre de pièces.</li>
+          <li><strong>Niveau de finition</strong> attendu : grossier, fin ou livraison.</li>
+          <li><strong>Vitrerie</strong> : nombre et type de vitres (chronophage, souvent à part).</li>
+          <li><strong>Nature des sols</strong> : carrelage, parquet, béton, résine.</li>
+          <li><strong>Accessibilité</strong> : étage, ascenseur, co-activité, évacuation des déchets.</li>
+          <li><strong>Date butoir</strong> et contraintes d&apos;horaires.</li>
+        </ul>
+
+        {/* Sources d'autorité (TVA travaux) pour la citabilité GEO + E-E-A-T. */}
+        <SourcesBox
+          sources={[
+            { label: "TVA : taux applicables aux travaux", href: "https://entreprendre.service-public.fr", publisher: "service-public.fr (Entreprendre)" },
+            { label: "Bulletin officiel des finances publiques (BOFiP)", href: "https://bofip.impots.gouv.fr", publisher: "impots.gouv.fr" },
+          ]}
+        />
+
         <h2 id="definition">Nettoyage de fin de chantier, en clair</h2>
         <DefinitionBox term="Nettoyage de fin de chantier">
           Prestation ponctuelle réalisée à l&apos;issue de travaux de construction ou de rénovation,
@@ -269,11 +316,11 @@ export default function Page() {
             Cadrez votre demande avant de consulter
           </p>
           <p className="mt-1 text-sm text-muted-ink">
-            Un cahier des charges précis et un modèle de devis évitent les prestations incomplètes.
+            Un cahier des charges précis évite les prestations incomplètes et les avenants.
           </p>
           <div className="mt-4 flex flex-wrap gap-3">
-            <Button href="/reglementation/grille-salaire-proprete-2026" variant="primary">
-              Voir la grille de salaire 2026
+            <Button href="/developpement/cahier-des-charges-nettoyage" variant="primary">
+              Rédiger un cahier des charges
             </Button>
             <Button href="/tarifs/comment-comparer-devis-nettoyage" variant="secondary">
               Comment comparer des devis

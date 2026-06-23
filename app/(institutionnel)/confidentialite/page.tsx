@@ -21,7 +21,7 @@ export default function Page() {
       <h2>Données collectées</h2>
       <p>
         Nous collectons uniquement les données que vous nous transmettez volontairement : adresse
-        e-mail lors d&apos;une inscription à la newsletter ou d&apos;un téléchargement de modèle.
+        e-mail lors d&apos;une inscription à la newsletter.
       </p>
       <h2>Finalité</h2>
       <p>

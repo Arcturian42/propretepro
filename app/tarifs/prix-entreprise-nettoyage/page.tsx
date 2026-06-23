@@ -33,7 +33,9 @@ const TOC = [
   { id: "en-bref", label: "En bref" },
   { id: "forfaits", label: "Forfaits et abonnements mensuels" },
   { id: "logique", label: "Comment se construit le prix" },
+  { id: "exemple", label: "Exemple de budget annuel" },
   { id: "facteurs", label: "Facteurs qui influencent le prix" },
+  { id: "negocier", label: "Négocier et sécuriser" },
   { id: "definition", label: "Forfait, abonnement, régie" },
   { id: "faq", label: "Questions fréquentes" },
 ];
@@ -76,6 +78,16 @@ const FAQ = [
     question: "Peut-on négocier le prix d'un contrat de nettoyage ?",
     answer:
       "Oui, surtout en jouant sur la durée d'engagement et la fréquence. Un engagement de 12 à 36 mois ou une fréquence élevée donnent de la visibilité au prestataire et justifient une remise. À l'inverse, exiger des prestations supplémentaires sans rallonger le temps de présence dégrade la qualité. La négociation la plus saine porte sur le périmètre, pas sur la compression du temps.",
+  },
+  {
+    question: "Existe-t-il un forfait minimum pour de petits locaux ?",
+    answer:
+      "Oui. La plupart des entreprises de nettoyage appliquent un forfait plancher, souvent compris entre 90 et 150 € HT par mois, en deçà duquel l'intervention n'est pas rentable (temps de déplacement, gestion administrative). Pour de très petites surfaces, ce minimum peut représenter un prix au m² élevé : regrouper les passages ou mutualiser avec un voisin permet d'optimiser.",
+  },
+  {
+    question: "Comment le prix d'un contrat de nettoyage évolue-t-il dans le temps ?",
+    answer:
+      "Un contrat pluriannuel comporte en principe une clause de révision de prix qui réindexe le tarif chaque année, le plus souvent sur un indice de coût du travail (la main-d'œuvre étant le poste dominant). Sans cette clause, le prix reste figé mais le prestataire absorbe seul la hausse des salaires, ce qui finit par dégrader la prestation. Vérifiez la formule et l'indice avant de signer.",
   },
 ];
 
@@ -222,6 +234,29 @@ export default function Page() {
           <a href="/tarifs/tarif-horaire-nettoyage">tarif horaire du nettoyage</a>.
         </p>
 
+        <h2 id="exemple">Exemple de budget annuel</h2>
+        <p>
+          Pour passer du forfait mensuel au coût réel, projetez la dépense sur l&apos;année, TVA
+          comprise, et ajoutez les prestations périodiques. Exemple pour <strong>300 m² de bureaux,
+          2 à 3 passages par semaine</strong> :
+        </p>
+        <FactTable
+          caption="Budget annuel d'un contrat d'entretien (300 m², 2-3×/sem, exemple indicatif)"
+          headers={["Poste", "Base", "Montant"]}
+          rows={[
+            ["Abonnement mensuel HT", "Entretien courant", "520 €"],
+            ["Abonnement annuel HT", "× 12 mois", "6 240 €"],
+            ["Prestations périodiques HT", "Vitrerie, sols (annuel)", "≈ 600 €"],
+            ["Total annuel HT", "—", "≈ 6 840 €"],
+            ["TVA", "20 %", "1 368 €"],
+            ["Total annuel TTC", "—", "≈ 8 208 €"],
+          ]}
+        />
+        <p>
+          Raisonner en coût annuel TTC évite de comparer des forfaits d&apos;entrée trompeurs et
+          révèle le vrai poids du poste propreté dans votre budget.
+        </p>
+
         <h2 id="facteurs">Les facteurs qui influencent le prix</h2>
         <ul>
           <li>
@@ -244,6 +279,19 @@ export default function Page() {
             <strong>Les horaires et la zone géographique</strong> : interventions tôt/tard,
             week-end, ou Île-de-France majorent le coût.
           </li>
+        </ul>
+
+        <h2 id="negocier">Négocier et sécuriser son contrat</h2>
+        <p>
+          Une fois le juste prix identifié, l&apos;enjeu est de le sécuriser dans la durée :
+        </p>
+        <ul>
+          <li><strong>Durée d&apos;engagement</strong> : 12 à 36 mois donnent de la visibilité au prestataire et justifient une remise.</li>
+          <li><strong>Périmètre clair</strong> : un{" "}
+            <a href="/developpement/cahier-des-charges-nettoyage">cahier des charges</a> évite les prestations non facturées… ou non réalisées.</li>
+          <li><strong>Clause de révision de prix</strong> : encadrez l&apos;indexation annuelle pour éviter les hausses surprises — voir le{" "}
+            <a href="/developpement/contrat-nettoyage-clause-revision-prix">contrat &amp; clause de révision</a>.</li>
+          <li><strong>Continuité de service</strong> : exigez un plan de remplacement en cas d&apos;absence.</li>
         </ul>
 
         <KeyTakeaways
@@ -269,11 +317,11 @@ export default function Page() {
             Cadrez votre contrat avant de signer
           </p>
           <p className="mt-1 text-sm text-muted-ink">
-            Un cahier des charges clair et un modèle de devis vous évitent les mauvaises surprises.
+            Un cahier des charges clair vous évite les mauvaises surprises.
           </p>
           <div className="mt-4 flex flex-wrap gap-3">
-            <Button href="/reglementation/grille-salaire-proprete-2026" variant="primary">
-              Voir la grille de salaire 2026
+            <Button href="/developpement/cahier-des-charges-nettoyage" variant="primary">
+              Rédiger un cahier des charges
             </Button>
             <Button href="/tarifs/comment-comparer-devis-nettoyage" variant="secondary">
               Comment comparer des devis

@@ -26,6 +26,9 @@ ${bySilo("reglementation")}
 ## Tarifs & prix du nettoyage
 ${bySilo("tarifs")}
 
+## Logiciels & outils de gestion
+${bySilo("logiciels")}
+
 ## À propos
 - [À propos de ${SITE.name}](${SITE.url}/a-propos)
 - [Les auteurs](${SITE.url}/auteurs)
