@@ -28,14 +28,17 @@ export function CleaningMachine() {
         }}
       />
 
-      {/* Reflet de sol très subtil (image miroir atténuée) */}
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src="/autolaveuse.webp"
-        alt=""
+      {/* Reflet de sol très subtil (purement décoratif) — rendu en background CSS plutôt
+          qu'en <img> sans alt, pour ne pas générer d'image sans description. */}
+      <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 bottom-0 z-0 h-1/2 w-full -scale-y-100 object-contain object-top opacity-10"
+        className="pointer-events-none absolute inset-x-0 bottom-0 z-0 h-1/2 w-full opacity-10"
         style={{
+          backgroundImage: "url(/autolaveuse.webp)",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "top center",
+          backgroundSize: "contain",
+          transform: "scaleY(-1)",
           maskImage: "linear-gradient(to bottom, black, transparent 55%)",
           WebkitMaskImage: "linear-gradient(to bottom, black, transparent 55%)",
         }}

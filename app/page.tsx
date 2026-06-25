@@ -23,6 +23,9 @@ import { AI_FAQ } from "@/lib/ai";
 import { faqSchema, itemListSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
+  // Description dédiée à l'accueil (≈155 car.), reprenant les termes du H1 (média, propreté).
+  description:
+    "PropretéPro, le média des dirigeants de la propreté : grille de salaire 2026 (IDCC 3043), prix du nettoyage et conseils de gestion pour piloter votre rentabilité.",
   // Canonical explicite de la page d'accueil (la plus crawlée par les moteurs IA).
   alternates: { canonical: SITE.url },
 };
@@ -259,15 +262,13 @@ export default function HomePage() {
         </StaggerGroup>
       </section>
 
-      {/* FAQ générale — contenu citable par les moteurs IA (FAQPage JSON-LD ci-dessus). */}
+      {/* FAQ générale — contenu citable par les moteurs IA (FAQPage JSON-LD ci-dessus).
+          Un seul <h2> pour cette section (celui de FAQSection), pour éviter les titres en double. */}
       <section className="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
         <Reveal className="mb-8 text-center">
-          <Badge tone="teal">Questions fréquentes</Badge>
-          <h2 className="section-heading mt-3 text-2xl sm:text-3xl">
-            L&apos;essentiel sur la propreté en France
-          </h2>
+          <Badge tone="teal">FAQ</Badge>
         </Reveal>
-        <FAQSection items={AI_FAQ} title="Questions fréquentes sur le secteur de la propreté" />
+        <FAQSection items={AI_FAQ} title="L'essentiel sur la propreté en France : questions fréquentes" />
       </section>
 
       <NewsletterCTA />
