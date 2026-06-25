@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { buildMetadata } from "@/lib/seo";
 import { SchemaMarkup } from "@/components/seo/SchemaMarkup";
-import { articleSchema, faqSchema, breadcrumbSchema } from "@/lib/schema";
+import { articleSchema, faqSchema, breadcrumbSchema, datasetSchema } from "@/lib/schema";
 import { ArticleLayout } from "@/components/layout/ArticleLayout";
 import { AnswerBox, KeyTakeaways, DefinitionBox, FactTable, InfoCallout, PullQuote } from "@/components/sections/GeoBlocks";
 import { SourcesBox } from "@/components/sections/SourcesBox";
@@ -111,6 +111,26 @@ export default function Page() {
           }),
           faqSchema(FAQ),
           breadcrumbSchema(CRUMBS),
+          datasetSchema({
+            name: "Grille de salaire de la propreté 2026 (IDCC 3043)",
+            description:
+              "Taux horaires minima conventionnels 2026 de la branche propreté (IDCC 3043) par échelon et coefficient, pour les agents de service, la maîtrise et les cadres. Fourchettes indicatives en euros brut, à vérifier au dernier avenant salaires étendu.",
+            path: PATH,
+            dateModified: article.dateModified,
+            temporalCoverage: "2026",
+            keywords: [
+              "grille salaire propreté 2026",
+              "IDCC 3043",
+              "taux horaire minimum agent de propreté",
+              "coefficient propreté",
+            ],
+            variables: [
+              "Taux horaire brut minimum par échelon",
+              "Coefficient hiérarchique",
+              "Salaire mensuel brut (151,67 h)",
+            ],
+            unitText: "EUR",
+          }),
         ]}
       />
 
@@ -407,7 +427,7 @@ export default function Page() {
           sources={[
             {
               label: "Convention collective nationale des entreprises de propreté (IDCC 3043)",
-              href: "https://www.legifrance.gouv.fr/liste/idcc",
+              href: "https://www.legifrance.gouv.fr/liste/idcc?idcc=3043",
               publisher: "Légifrance",
             },
             {

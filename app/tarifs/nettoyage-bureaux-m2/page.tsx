@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { buildMetadata } from "@/lib/seo";
 import { SchemaMarkup } from "@/components/seo/SchemaMarkup";
-import { articleSchema, faqSchema, breadcrumbSchema } from "@/lib/schema";
+import { articleSchema, faqSchema, breadcrumbSchema, datasetSchema } from "@/lib/schema";
 import { ArticleLayout } from "@/components/layout/ArticleLayout";
 import {
   AnswerBox,
@@ -9,6 +9,7 @@ import {
   DefinitionBox,
   FactTable,
   InfoCallout,
+  PullQuote,
 } from "@/components/sections/GeoBlocks";
 import { FAQSection } from "@/components/sections/FAQSection";
 import { RelatedArticles } from "@/components/sections/RelatedArticles";
@@ -156,6 +157,25 @@ export default function Page() {
           }),
           faqSchema(FAQ),
           breadcrumbSchema(CRUMBS),
+          datasetSchema({
+            name: "Prix du nettoyage de bureaux au m² en 2026 (France)",
+            description:
+              "Fourchettes indicatives HT du nettoyage de bureaux en France en 2026 : prix au m² par passage selon la fréquence, repère horaire facturé et budget mensuel estimé par surface. Données à titre informatif pour le marché français.",
+            path: PATH,
+            dateModified: article.dateModified,
+            temporalCoverage: "2026",
+            keywords: [
+              "prix nettoyage bureaux m2",
+              "tarif nettoyage bureaux 2026",
+              "budget nettoyage bureaux",
+            ],
+            variables: [
+              "Prix au m² par passage (HT)",
+              "Repère horaire facturé (HT)",
+              "Budget mensuel indicatif par surface (HT)",
+            ],
+            unitText: "EUR",
+          }),
         ]}
       />
 
@@ -213,6 +233,12 @@ export default function Page() {
             ["Quotidien (locaux médicaux)", "0,40 – 0,65 €", "24 – 35 €/h"],
           ]}
         />
+
+        <PullQuote cite={`${author.name}, ${author.role}`}>
+          Un prix au m² qui semble imbattable cache presque toujours une fréquence plus faible ou des
+          prestations en moins : ce qui compte, ce n&apos;est pas le tarif unitaire affiché, mais le
+          coût ramené à un périmètre de prestation identique.
+        </PullQuote>
 
         <p>
           La <strong>surface</strong> joue ensuite un effet d&apos;échelle. En dessous de 150 m²,

@@ -213,6 +213,48 @@ export function breadcrumbSchema(crumbs: { name: string; href: string }[]) {
   };
 }
 
+/**
+ * Dataset — expose une grille chiffrée (salaires, fourchettes de prix) comme un
+ * jeu de données structuré et citable. Les moteurs IA privilégient les données
+ * numériques structurées dans leurs réponses (méthode GEO « statistiques »).
+ * `variables` reprend les en-têtes de colonnes réellement affichés (pas de duplication
+ * de valeurs, donc pas de risque de divergence avec le tableau visible).
+ */
+export function datasetSchema(args: {
+  name: string;
+  description: string;
+  path: string;
+  dateModified?: string;
+  temporalCoverage?: string;
+  keywords?: string[];
+  variables?: string[];
+  unitText?: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    name: args.name,
+    description: args.description,
+    url: `${SITE.url}${args.path}`,
+    inLanguage: "fr-FR",
+    isAccessibleForFree: true,
+    creator: { "@type": "Organization", name: SITE.name, url: SITE.url },
+    publisher: { "@type": "Organization", name: SITE.name, url: SITE.url },
+    ...(args.dateModified ? { dateModified: args.dateModified } : {}),
+    ...(args.temporalCoverage ? { temporalCoverage: args.temporalCoverage } : {}),
+    ...(args.keywords ? { keywords: args.keywords } : {}),
+    ...(args.variables
+      ? {
+          variableMeasured: args.variables.map((v) => ({
+            "@type": "PropertyValue",
+            name: v,
+            ...(args.unitText ? { unitText: args.unitText } : {}),
+          })),
+        }
+      : {}),
+  };
+}
+
 export function softwareReviewSchema(args: {
   name: string;
   description: string;
