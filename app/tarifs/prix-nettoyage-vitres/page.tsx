@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { buildMetadata } from "@/lib/seo";
 import { SchemaMarkup } from "@/components/seo/SchemaMarkup";
-import { articleSchema, faqSchema, breadcrumbSchema } from "@/lib/schema";
+import { articleSchema, faqSchema, breadcrumbSchema, datasetSchema } from "@/lib/schema";
 import { ArticleLayout } from "@/components/layout/ArticleLayout";
 import {
   AnswerBox,
@@ -9,6 +9,7 @@ import {
   DefinitionBox,
   FactTable,
   InfoCallout,
+  PullQuote,
 } from "@/components/sections/GeoBlocks";
 import { FAQSection } from "@/components/sections/FAQSection";
 import { RelatedArticles } from "@/components/sections/RelatedArticles";
@@ -106,6 +107,17 @@ export default function Page() {
           }),
           faqSchema(FAQ),
           breadcrumbSchema(CRUMBS),
+          datasetSchema({
+            name: "Prix du nettoyage de vitres en 2026 (France)",
+            description:
+              "Fourchettes de prix HT 2026 du nettoyage de vitres sur le marché français, au m² de vitrage par face (1 à 5 €) et à la vacation ou à l'heure (30 à 55 €/h), selon la hauteur et l'accès.",
+            path: PATH,
+            dateModified: article.dateModified,
+            temporalCoverage: "2026",
+            keywords: ["prix nettoyage vitres", "tarif vitrerie", "vitrerie 2026"],
+            variables: ["Configuration", "Prix / m² / face", "Accès type"],
+            unitText: "EUR",
+          }),
         ]}
       />
 
@@ -188,6 +200,11 @@ export default function Page() {
             ["Surfaces vitrées sur corde (cordistes)", "4,50 – 8,00 €", "Travaux sur corde"],
           ]}
         />
+        <PullQuote cite={`${author.name}, ${author.role}`}>
+          Sur un devis de vitrerie, ce n&apos;est pas la surface qui fait le prix, c&apos;est la
+          façon d&apos;accéder aux vitres : du plain-pied à la corde, le coût au m² peut être
+          multiplié par plusieurs.
+        </PullQuote>
         <p>
           Attention au piège classique : un prix « au m² » très bas s&apos;entend parfois{" "}
           <strong>pour une seule face</strong>. Si vous voulez l&apos;intérieur et l&apos;extérieur,

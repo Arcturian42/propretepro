@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { buildMetadata } from "@/lib/seo";
 import { SchemaMarkup } from "@/components/seo/SchemaMarkup";
-import { articleSchema, faqSchema, breadcrumbSchema } from "@/lib/schema";
+import { articleSchema, faqSchema, breadcrumbSchema, datasetSchema } from "@/lib/schema";
 import { ArticleLayout } from "@/components/layout/ArticleLayout";
 import {
   AnswerBox,
@@ -9,6 +9,7 @@ import {
   DefinitionBox,
   FactTable,
   InfoCallout,
+  PullQuote,
 } from "@/components/sections/GeoBlocks";
 import { FAQSection } from "@/components/sections/FAQSection";
 import { RelatedArticles } from "@/components/sections/RelatedArticles";
@@ -104,6 +105,17 @@ export default function Page() {
           }),
           faqSchema(FAQ),
           breadcrumbSchema(CRUMBS),
+          datasetSchema({
+            name: "Prix du nettoyage de commerces au m² en 2026 (France)",
+            description:
+              "Fourchettes de prix indicatives (HT) du nettoyage de commerces au m² par passage en 2026 sur le marché français, par type de point de vente.",
+            path: PATH,
+            dateModified: article.dateModified,
+            temporalCoverage: "2026",
+            keywords: ["prix nettoyage commerces m2", "tarif nettoyage magasin", "prix nettoyage boutique"],
+            variables: ["Type de commerce", "Prix / m² / passage", "Fréquence courante"],
+            unitText: "EUR",
+          }),
         ]}
       />
 
@@ -162,6 +174,12 @@ export default function Page() {
             ["Grande surface (> 1000 m²)", "0,30 – 0,45 €", "Quotidien / pluriquotidien"],
           ]}
         />
+        <PullQuote cite={`${author.name}, ${author.role}`}>
+          Sur une petite boutique, c&apos;est le temps incompressible qui commande le prix au m² ;
+          une grande surface étale ce même temps fixe sur des milliers de mètres carrés et décroche
+          mécaniquement le meilleur tarif unitaire.
+        </PullQuote>
+
         <p>
           Les petits commerces affichent le prix au m² le plus élevé : le temps incompressible
           (installation, sanitaires, sortie des déchets, vitrines) pèse lourd sur une faible surface.

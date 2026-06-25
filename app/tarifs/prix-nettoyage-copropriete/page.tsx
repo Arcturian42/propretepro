@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { buildMetadata } from "@/lib/seo";
 import { SchemaMarkup } from "@/components/seo/SchemaMarkup";
-import { articleSchema, faqSchema, breadcrumbSchema } from "@/lib/schema";
+import { articleSchema, faqSchema, breadcrumbSchema, datasetSchema } from "@/lib/schema";
 import { ArticleLayout } from "@/components/layout/ArticleLayout";
 import {
   AnswerBox,
@@ -9,6 +9,7 @@ import {
   DefinitionBox,
   FactTable,
   InfoCallout,
+  PullQuote,
 } from "@/components/sections/GeoBlocks";
 import { FAQSection } from "@/components/sections/FAQSection";
 import { SourcesBox } from "@/components/sections/SourcesBox";
@@ -150,6 +151,17 @@ export default function Page() {
           }),
           faqSchema(FAQ),
           breadcrumbSchema(CRUMBS),
+          datasetSchema({
+            name: "Prix du nettoyage de copropriété en 2026 (France)",
+            description:
+              "Fourchettes de prix HT 2026 du nettoyage des parties communes de copropriété sur le marché français, par lot et par mois selon la fréquence et le standing.",
+            path: PATH,
+            dateModified: DATE_MODIFIED,
+            temporalCoverage: "2026",
+            keywords: ["prix nettoyage copropriété", "tarif nettoyage parties communes"],
+            variables: ["Fréquence", "Par lot / mois", "Profil d'immeuble"],
+            unitText: "EUR",
+          }),
         ]}
       />
 
@@ -196,6 +208,11 @@ export default function Page() {
             ["Quotidien (hall) + communs", "22 – 30 €", "Résidence de standing"],
           ]}
         />
+
+        <PullQuote cite={`${author.name}, ${author.role}`}>
+          La fréquence de passage reste le premier levier du coût : c&apos;est elle qu&apos;il faut
+          arbitrer avant tout pour situer le prix par lot et par mois.
+        </PullQuote>
 
         <p>
           Rapporté à l&apos;immeuble entier, cela donne des budgets mensuels très variables selon

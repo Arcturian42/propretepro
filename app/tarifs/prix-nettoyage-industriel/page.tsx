@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { buildMetadata } from "@/lib/seo";
 import { SchemaMarkup } from "@/components/seo/SchemaMarkup";
-import { articleSchema, faqSchema, breadcrumbSchema } from "@/lib/schema";
+import { articleSchema, faqSchema, breadcrumbSchema, datasetSchema } from "@/lib/schema";
 import { ArticleLayout } from "@/components/layout/ArticleLayout";
 import {
   AnswerBox,
@@ -9,6 +9,7 @@ import {
   DefinitionBox,
   FactTable,
   InfoCallout,
+  PullQuote,
 } from "@/components/sections/GeoBlocks";
 import { FAQSection } from "@/components/sections/FAQSection";
 import { RelatedArticles } from "@/components/sections/RelatedArticles";
@@ -105,6 +106,21 @@ export default function Page() {
           }),
           faqSchema(FAQ),
           breadcrumbSchema(CRUMBS),
+          datasetSchema({
+            name: "Prix du nettoyage industriel en 2026 (France)",
+            description:
+              "Fourchettes de prix HT 2026 du nettoyage industriel sur le marché français, par type de site, exprimées au m² par passage et en repère horaire facturé.",
+            path: PATH,
+            dateModified: article.dateModified,
+            temporalCoverage: "2026",
+            keywords: [
+              "prix nettoyage industriel",
+              "tarif nettoyage industriel",
+              "nettoyage agroalimentaire",
+            ],
+            variables: ["Type de site", "Prix / m² / passage", "Repère horaire facturé"],
+            unitText: "EUR",
+          }),
         ]}
       />
 
@@ -164,6 +180,12 @@ export default function Page() {
             ["Salle blanche / zone à atmosphère contrôlée", "1,20 – 2,50 €", "42 – 60 €/h"],
           ]}
         />
+        <PullQuote cite={`${author.name}, ${author.role}`}>
+          En industrie, le prix au m² n&apos;est qu&apos;un point de départ : deux sites de même
+          surface n&apos;exigent pas le même travail. Seule la visite technique permet de chiffrer
+          juste.
+        </PullQuote>
+
         <p>
           Ces fourchettes sont larges à dessein : en industrie, deux ateliers de même surface
           peuvent demander un travail très différent selon les machines, les salissures et les

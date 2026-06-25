@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { buildMetadata } from "@/lib/seo";
 import { SchemaMarkup } from "@/components/seo/SchemaMarkup";
-import { breadcrumbSchema, faqSchema } from "@/lib/schema";
+import { breadcrumbSchema, faqSchema, itemListSchema } from "@/lib/schema";
 import { SiloHub } from "@/components/sections/SiloHub";
 import { FAQSection } from "@/components/sections/FAQSection";
 import { InfoCallout } from "@/components/sections/GeoBlocks";
@@ -51,9 +51,13 @@ export const metadata: Metadata = buildMetadata({
 
 export default function DeveloppementHub() {
   const articles = articlesBySilo("developpement");
+  const itemList = itemListSchema({
+    name: "Guides développement & gestion d'entreprise de propreté",
+    items: articles.map((a) => ({ name: a.title, href: a.href, description: a.excerpt })),
+  });
   return (
     <>
-      <SchemaMarkup schema={[breadcrumbSchema(CRUMBS), faqSchema(FAQ)]} />
+      <SchemaMarkup schema={[breadcrumbSchema(CRUMBS), itemList, faqSchema(FAQ)]} />
       <SiloHub
         crumbs={CRUMBS}
         kicker="Développement & gestion"

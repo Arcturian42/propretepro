@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import Image from "next/image";
 import { Clock, RefreshCw } from "lucide-react";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import type { Crumb } from "@/components/ui/Breadcrumb";
@@ -69,13 +70,13 @@ export function ArticleLayout(props: ArticleLayoutProps) {
       {/* Cover image */}
       {cover && (
         <div className="mx-auto max-w-3xl px-4 pt-8 sm:px-6">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          <Image
             src={cover}
             alt={`Illustration : ${title}`}
             width={1200}
             height={630}
-            loading="eager"
+            priority
+            sizes="(max-width: 768px) 100vw, 768px"
             className="aspect-[1200/630] w-full rounded-2xl border border-line object-cover shadow-[0_20px_50px_rgba(15,23,42,0.10)]"
           />
         </div>

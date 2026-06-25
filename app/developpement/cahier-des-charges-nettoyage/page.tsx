@@ -218,7 +218,7 @@ export default function Page() {
           mesuré par des indicateurs, en laissant le prestataire organiser ses moyens. Cette dernière
           approche, plus moderne, exige une <strong>grille de contrôle qualité</strong> opposable.
         </p>
-        <PullQuote cite="Marc Leroy, consultant exploitation & achats propreté">
+        <PullQuote cite={`${author.name}, ${author.role}`}>
           Un niveau de qualité qui n&apos;est pas mesurable n&apos;est pas exigible : sans grille de
           contrôle, l&apos;obligation de résultat reste un vœu pieux.
         </PullQuote>

@@ -100,6 +100,19 @@ export default function Page() {
           }),
           faqSchema(FAQ),
           breadcrumbSchema(CRUMBS),
+          // Entité SoftwareApplication de l'outil recommandé (sans note/avis inventé) :
+          // aide les moteurs IA à identifier la solution citée pour « meilleur logiciel propreté ».
+          {
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            name: "Proprely",
+            applicationCategory: "BusinessApplication",
+            operatingSystem: "Web, Android, iOS",
+            inLanguage: "fr-FR",
+            url: `https://propretepro.fr${PATH}`,
+            description:
+              "Logiciel de gestion tout-en-un pour entreprises de propreté : planning, pointage (GPS/QR/NFC), devis-facturation, contrôle qualité et conformité à la facturation électronique 2026.",
+          },
         ]}
       />
 
@@ -174,7 +187,7 @@ export default function Page() {
           ]}
         />
 
-        <PullQuote cite="Marc Leroy, consultant exploitation propreté">
+        <PullQuote cite={`${author.name}, ${author.role}`}>
           Le bon logiciel n&apos;est pas celui qui a le plus de fonctions, mais celui qui supprime la
           double saisie entre le terrain et le bureau.
         </PullQuote>

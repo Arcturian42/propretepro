@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { buildMetadata } from "@/lib/seo";
 import { SchemaMarkup } from "@/components/seo/SchemaMarkup";
-import { articleSchema, faqSchema, breadcrumbSchema } from "@/lib/schema";
+import { articleSchema, faqSchema, breadcrumbSchema, datasetSchema } from "@/lib/schema";
 import { ArticleLayout } from "@/components/layout/ArticleLayout";
 import {
   AnswerBox,
@@ -9,6 +9,7 @@ import {
   DefinitionBox,
   FactTable,
   InfoCallout,
+  PullQuote,
 } from "@/components/sections/GeoBlocks";
 import { FAQSection } from "@/components/sections/FAQSection";
 import { RelatedArticles } from "@/components/sections/RelatedArticles";
@@ -149,6 +150,21 @@ export default function Page() {
           }),
           faqSchema(FAQ),
           breadcrumbSchema(CRUMBS),
+          datasetSchema({
+            name: "Prix d'une entreprise de nettoyage en 2026 (France)",
+            description:
+              "Fourchettes indicatives HT des abonnements mensuels d'entreprise de nettoyage sur le marché français en 2026, à titre informatif.",
+            path: PATH,
+            dateModified: DATE_MODIFIED,
+            temporalCoverage: "2026",
+            keywords: [
+              "prix entreprise de nettoyage",
+              "abonnement nettoyage mensuel",
+              "forfait nettoyage",
+            ],
+            variables: ["Surface", "1x / semaine", "2-3x / semaine", "5x / semaine"],
+            unitText: "EUR",
+          }),
         ]}
       />
 
@@ -191,6 +207,12 @@ export default function Page() {
           tarif horaire du prestataire. Voici des fourchettes indicatives pour un entretien courant
           de bureaux ou commerces, hors prestations périodiques (vitrerie, remise en état).
         </p>
+
+        <PullQuote cite={`${author.name}, ${author.role}`}>
+          Un forfait mensuel n&apos;est jamais qu&apos;un temps de présence valorisé au tarif
+          horaire du prestataire : la surface et la fréquence en fixent le volume d&apos;heures,
+          et c&apos;est là que tout se joue.
+        </PullQuote>
 
         <FactTable
           caption="Abonnement mensuel indicatif — entretien courant (HT) — 2026"
