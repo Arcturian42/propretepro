@@ -386,7 +386,7 @@ export default function Page() {
             },
             {
               label: "Convention collective des entreprises de propreté (IDCC 3043)",
-              href: "https://www.legifrance.gouv.fr/liste/idcc",
+              href: "https://www.legifrance.gouv.fr/liste/idcc?idcc=3043",
               publisher: "Légifrance",
             },
           ]}

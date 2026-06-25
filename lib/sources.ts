@@ -12,7 +12,7 @@ import type { Source } from "@/components/sections/SourcesBox";
 const S = {
   idcc3043: {
     label: "Convention collective nationale des entreprises de propreté (IDCC 3043)",
-    href: "https://www.legifrance.gouv.fr/liste/idcc",
+    href: "https://www.legifrance.gouv.fr/liste/idcc?idcc=3043",
     publisher: "Légifrance",
   },
   codeTravail: {

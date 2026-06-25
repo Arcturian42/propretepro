@@ -14,7 +14,16 @@ export function organizationSchema() {
     url: SITE.url,
     logo: `${SITE.url}/apple-icon`,
     description: SITE.description,
+    slogan: SITE.tagline,
     foundingDate: String(SITE.foundingYear),
+    areaServed: { "@type": "Country", name: "France" },
+    knowsAbout: [
+      "Convention collective propreté IDCC 3043",
+      "Grille de salaire et classification des agents de propreté",
+      "URSSAF et coût du travail dans le nettoyage",
+      "Tarifs et prix du nettoyage en France",
+      "Rentabilité et coût de revient des prestations de propreté",
+    ],
     sameAs: [
       "https://www.linkedin.com/company/propretepro",
       "https://twitter.com/propretepro",
@@ -26,6 +35,28 @@ export function organizationSchema() {
       areaServed: "FR",
       availableLanguage: "French",
     },
+  };
+}
+
+/**
+ * ItemList — expose une liste ordonnée d'entités (piliers, ressources) pour
+ * aider les moteurs IA à cartographier la structure du site et à le citer.
+ */
+export function itemListSchema(args: {
+  name: string;
+  items: { name: string; href: string; description?: string }[];
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: args.name,
+    itemListElement: args.items.map((it, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: it.name,
+      url: `${SITE.url}${it.href}`,
+      ...(it.description ? { description: it.description } : {}),
+    })),
   };
 }
 
@@ -179,6 +210,48 @@ export function breadcrumbSchema(crumbs: { name: string; href: string }[]) {
       name: c.name,
       item: `${SITE.url}${c.href}`,
     })),
+  };
+}
+
+/**
+ * Dataset — expose une grille chiffrée (salaires, fourchettes de prix) comme un
+ * jeu de données structuré et citable. Les moteurs IA privilégient les données
+ * numériques structurées dans leurs réponses (méthode GEO « statistiques »).
+ * `variables` reprend les en-têtes de colonnes réellement affichés (pas de duplication
+ * de valeurs, donc pas de risque de divergence avec le tableau visible).
+ */
+export function datasetSchema(args: {
+  name: string;
+  description: string;
+  path: string;
+  dateModified?: string;
+  temporalCoverage?: string;
+  keywords?: string[];
+  variables?: string[];
+  unitText?: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    name: args.name,
+    description: args.description,
+    url: `${SITE.url}${args.path}`,
+    inLanguage: "fr-FR",
+    isAccessibleForFree: true,
+    creator: { "@type": "Organization", name: SITE.name, url: SITE.url },
+    publisher: { "@type": "Organization", name: SITE.name, url: SITE.url },
+    ...(args.dateModified ? { dateModified: args.dateModified } : {}),
+    ...(args.temporalCoverage ? { temporalCoverage: args.temporalCoverage } : {}),
+    ...(args.keywords ? { keywords: args.keywords } : {}),
+    ...(args.variables
+      ? {
+          variableMeasured: args.variables.map((v) => ({
+            "@type": "PropertyValue",
+            name: v,
+            ...(args.unitText ? { unitText: args.unitText } : {}),
+          })),
+        }
+      : {}),
   };
 }
 

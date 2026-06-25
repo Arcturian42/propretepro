@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { buildMetadata } from "@/lib/seo";
 import { SchemaMarkup } from "@/components/seo/SchemaMarkup";
-import { articleSchema, faqSchema, breadcrumbSchema } from "@/lib/schema";
+import { articleSchema, faqSchema, breadcrumbSchema, datasetSchema } from "@/lib/schema";
 import { ArticleLayout } from "@/components/layout/ArticleLayout";
 import {
   AnswerBox,
@@ -9,6 +9,7 @@ import {
   DefinitionBox,
   FactTable,
   InfoCallout,
+  PullQuote,
 } from "@/components/sections/GeoBlocks";
 import { FAQSection } from "@/components/sections/FAQSection";
 import { SourcesBox } from "@/components/sections/SourcesBox";
@@ -156,6 +157,25 @@ export default function Page() {
           }),
           faqSchema(FAQ),
           breadcrumbSchema(CRUMBS),
+          datasetSchema({
+            name: "Tarif horaire du nettoyage en 2026 (France)",
+            description:
+              "Fourchettes indicatives HT du tarif horaire de nettoyage en France en 2026, par type de prestation et de locaux. Données à titre informatif pour aider à fixer ou comparer un prix sur le marché français.",
+            path: PATH,
+            dateModified: DATE_MODIFIED,
+            temporalCoverage: "2026",
+            keywords: [
+              "tarif horaire nettoyage 2026",
+              "prix heure nettoyage",
+              "taux horaire facturé propreté",
+            ],
+            variables: [
+              "Tarif horaire facturé (HT)",
+              "Type de prestation",
+              "Type de locaux",
+            ],
+            unitText: "EUR",
+          }),
         ]}
       />
 
@@ -203,6 +223,12 @@ export default function Page() {
             ["Remise en état / fin de chantier", "25 – 40 €/h", "Effort physique, matériel spécifique"],
           ]}
         />
+
+        <PullQuote cite={`${author.name}, ${author.role}`}>
+          Un taux horaire en dessous de 18 €/h ne laisse mécaniquement plus de place au coût chargé
+          réel d&apos;un agent une fois ajoutés l&apos;encadrement et les frais de structure : c&apos;est
+          le premier signal d&apos;un devis qui se rattrapera sur la qualité ou la pérennité.
+        </PullQuote>
 
         <h2 id="composition">Ce qui compose le tarif horaire</h2>
         <p>
