@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { buildMetadata } from "@/lib/seo";
 import { SchemaMarkup } from "@/components/seo/SchemaMarkup";
-import { articleSchema, faqSchema, breadcrumbSchema, datasetSchema } from "@/lib/schema";
+import { articleSchema, faqSchema, breadcrumbSchema, datasetSchema, howToSchema } from "@/lib/schema";
 import { ArticleLayout } from "@/components/layout/ArticleLayout";
 import { AnswerBox, KeyTakeaways, DefinitionBox, FactTable, InfoCallout, PullQuote } from "@/components/sections/GeoBlocks";
 import { SourcesBox } from "@/components/sections/SourcesBox";
@@ -130,6 +130,29 @@ export default function Page() {
               "Salaire mensuel brut (151,67 h)",
             ],
             unitText: "EUR",
+          }),
+          howToSchema({
+            name: "Comment appliquer la grille de salaire propreté 2026",
+            description:
+              "Méthode en 4 étapes pour appliquer correctement le minimum conventionnel d'un salarié de la branche propreté (IDCC 3043).",
+            steps: [
+              {
+                name: "Identifier la classification réelle",
+                text: "Déterminer l'échelon et le coefficient de chaque salarié à partir des tâches réellement exercées.",
+              },
+              {
+                name: "Vérifier le taux minimum en vigueur",
+                text: "Lire le taux horaire minimum de l'avenant salaires applicable à la date de paie.",
+              },
+              {
+                name: "Comparer au salaire versé",
+                text: "Comparer le salaire de base versé au minimum conventionnel applicable à la classification.",
+              },
+              {
+                name: "Ajouter primes et majorations",
+                text: "Ajouter les primes et majorations dues (ancienneté, nuit, dimanche, férié), puis contrôler le bulletin.",
+              },
+            ],
           }),
         ]}
       />

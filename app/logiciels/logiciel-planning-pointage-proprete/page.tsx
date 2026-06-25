@@ -162,7 +162,7 @@ export default function Page() {
           </li>
         </ul>
 
-        <PullQuote cite="Marc Leroy, consultant exploitation propreté">
+        <PullQuote cite={`${author.name}, ${author.role}`}>
           Sans preuve de réalisation horodatée, un litige client se règle au mieux à la confiance, au
           pire en perdant le contrat.
         </PullQuote>

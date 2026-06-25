@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { buildMetadata } from "@/lib/seo";
 import { SchemaMarkup } from "@/components/seo/SchemaMarkup";
-import { articleSchema, faqSchema, breadcrumbSchema } from "@/lib/schema";
+import { articleSchema, faqSchema, breadcrumbSchema, datasetSchema } from "@/lib/schema";
 import { ArticleLayout } from "@/components/layout/ArticleLayout";
 import {
   AnswerBox,
@@ -9,6 +9,7 @@ import {
   DefinitionBox,
   FactTable,
   InfoCallout,
+  PullQuote,
 } from "@/components/sections/GeoBlocks";
 import { FAQSection } from "@/components/sections/FAQSection";
 import { SourcesBox } from "@/components/sections/SourcesBox";
@@ -150,6 +151,17 @@ export default function Page() {
           }),
           faqSchema(FAQ),
           breadcrumbSchema(CRUMBS),
+          datasetSchema({
+            name: "Prix du nettoyage de fin de chantier en 2026 (France)",
+            description:
+              "Fourchettes de prix au m² HT 2026 du nettoyage de fin de chantier sur le marché français, selon le niveau de finition (grossier, fin, livraison).",
+            path: PATH,
+            dateModified: DATE_MODIFIED,
+            temporalCoverage: "2026",
+            keywords: ["prix nettoyage fin de chantier", "tarif m2", "nettoyage après travaux"],
+            variables: ["Type de prestation", "Prix / m²", "Ce qui est traité"],
+            unitText: "EUR",
+          }),
         ]}
       />
 
@@ -200,6 +212,12 @@ export default function Page() {
             ["Nettoyage de livraison", "4,50 – 6 €", "État impeccable, adhésifs, traces, finitions"],
           ]}
         />
+
+        <PullQuote cite={`${author.name}, ${author.role}`}>
+          Si la fin de chantier se paie plus cher au m² qu&apos;un entretien courant, c&apos;est
+          parce qu&apos;elle impose une cadence lente et un matériel spécifique : c&apos;est le
+          niveau de finition attendu qui fixe le prix.
+        </PullQuote>
 
         <p>
           Pour de petites surfaces, un <strong>forfait minimum</strong> (souvent 150 à 300 €)

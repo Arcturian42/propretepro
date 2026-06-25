@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { buildMetadata } from "@/lib/seo";
 import { SchemaMarkup } from "@/components/seo/SchemaMarkup";
-import { articleSchema, faqSchema, breadcrumbSchema } from "@/lib/schema";
+import { articleSchema, faqSchema, breadcrumbSchema, datasetSchema } from "@/lib/schema";
 import { ArticleLayout } from "@/components/layout/ArticleLayout";
 import {
   AnswerBox,
@@ -107,6 +107,25 @@ export default function Page() {
           }),
           faqSchema(FAQ),
           breadcrumbSchema(CRUMBS),
+          datasetSchema({
+            name: "Prix du nettoyage de cabinet médical en 2026 (France)",
+            description:
+              "Fourchettes de prix HT 2026 du nettoyage et de la désinfection en milieu médical sur le marché français : 0,70 à 1,40 €/m² par passage ou 26 à 45 €/h facturés.",
+            path: PATH,
+            dateModified: article.dateModified,
+            temporalCoverage: "2026",
+            keywords: [
+              "prix nettoyage médical",
+              "tarif nettoyage cabinet médical",
+              "bionettoyage milieu médical",
+            ],
+            variables: [
+              "Type d'établissement",
+              "Prix / m² / passage",
+              "Repère horaire facturé",
+            ],
+            unitText: "EUR",
+          }),
         ]}
       />
 
@@ -172,6 +191,11 @@ export default function Page() {
           dépasse celui des bureaux, qui plafonne autour de 0,30 à 0,60 €/m².
         </p>
 
+        <PullQuote cite={`${author.name}, ${author.role}`}>
+          En milieu médical, le tarif au m² dépasse toujours celui du tertiaire : ce n&apos;est pas
+          la surface qu&apos;on facture, mais la lenteur du bionettoyage et la désinfection imposée.
+        </PullQuote>
+
         <h2 id="zones">Prix par zone du cabinet</h2>
         <p>
           Un cabinet médical n&apos;est pas une surface homogène : chaque zone porte un niveau de
@@ -199,7 +223,7 @@ export default function Page() {
           contact sans atteindre l&apos;intensité de la zone de soins.
         </p>
 
-        <PullQuote cite="Marc Leroy, consultant exploitation & achats propreté">
+        <PullQuote cite={`${author.name}, ${author.role}`}>
           En milieu médical, on ne paie pas une surface : on paie un protocole et sa traçabilité. Un
           prix au m² seul, sans détail des zones, ne veut rien dire.
         </PullQuote>

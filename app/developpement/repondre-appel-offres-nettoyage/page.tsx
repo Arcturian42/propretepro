@@ -241,7 +241,7 @@ export default function Page() {
           headers={["Étape", "Contenu attendu"]}
           rows={MEMOIRE_STEPS.map((s) => [s.name, s.text])}
         />
-        <PullQuote cite="Marc Leroy, consultant exploitation & achats propreté">
+        <PullQuote cite={`${author.name}, ${author.role}`}>
           Un mémoire technique ne décrit pas votre entreprise en général : il décrit comment vous
           allez nettoyer <em>ce</em> site-là, avec <em>ces</em> contraintes-là.
         </PullQuote>

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { buildMetadata } from "@/lib/seo";
 import { SchemaMarkup } from "@/components/seo/SchemaMarkup";
-import { articleSchema, faqSchema, breadcrumbSchema } from "@/lib/schema";
+import { articleSchema, faqSchema, breadcrumbSchema, datasetSchema } from "@/lib/schema";
 import { ArticleLayout } from "@/components/layout/ArticleLayout";
 import {
   AnswerBox,
@@ -109,6 +109,17 @@ export default function Page() {
           }),
           faqSchema(FAQ),
           breadcrumbSchema(CRUMBS),
+          datasetSchema({
+            name: "Coût de revient d'un agent de propreté en 2026 (France)",
+            description:
+              "Repères chiffrés indicatifs pour calculer le coût horaire chargé et le prix de vente d'un agent de propreté en 2026, hors taxes, sur le marché français.",
+            path: PATH,
+            dateModified: article.dateModified,
+            temporalCoverage: "2026",
+            keywords: ["coût de revient agent propreté", "coût horaire chargé nettoyage"],
+            variables: ["Étape", "Base de calcul", "Montant ≈"],
+            unitText: "EUR",
+          }),
         ]}
       />
 
@@ -282,6 +293,12 @@ export default function Page() {
           réellement productives</strong>, selon l&apos;organisation. C&apos;est ce dénominateur, et
           lui seul, qui doit servir à répartir le coût annuel chargé.
         </p>
+
+        <PullQuote cite={`${author.name}, ${author.role}`}>
+          Répartir le coût chargé sur les heures réellement passées chez le client, et non sur les
+          heures payées, change tout : c&apos;est ce qui sépare un devis rentable d&apos;un contrat
+          travaillé à perte.
+        </PullQuote>
 
         <h2 id="cout-productif">Étape 5 : le coût horaire productif</h2>
         <p>

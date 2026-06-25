@@ -40,6 +40,7 @@ ${bySilo("developpement")}
 - Prime d'ancienneté par paliers : ~2 % à 4 ans jusqu'à ~6 % à 15 ans du minimum conventionnel.
 
 ## Ressources pour moteurs IA
+- [Version étendue avec contexte complet (llms-full.txt)](${SITE.url}/llms-full.txt)
 - [Politique d'accès et de citation (ai.txt)](${SITE.url}/.well-known/ai.txt)
 - [Fiche d'identité du site (JSON)](${SITE.url}/ai/summary.json)
 - [Questions/réponses de référence (JSON)](${SITE.url}/ai/faq.json)

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { buildMetadata } from "@/lib/seo";
 import { SchemaMarkup } from "@/components/seo/SchemaMarkup";
-import { articleSchema, faqSchema, breadcrumbSchema } from "@/lib/schema";
+import { articleSchema, faqSchema, breadcrumbSchema, datasetSchema } from "@/lib/schema";
 import { ArticleLayout } from "@/components/layout/ArticleLayout";
 import {
   AnswerBox,
@@ -106,6 +106,21 @@ export default function Page() {
           }),
           faqSchema(FAQ),
           breadcrumbSchema(CRUMBS),
+          datasetSchema({
+            name: "Prix du nettoyage de cage d'escalier en copropriété (2026, France)",
+            description:
+              "Fourchettes indicatives HT du nettoyage de cage d'escalier en copropriété en 2026, par nombre d'étages et par fréquence, pour le marché français.",
+            path: PATH,
+            dateModified: article.dateModified,
+            temporalCoverage: "2026",
+            keywords: [
+              "prix nettoyage cage escalier",
+              "tarif nettoyage cage escalier copropriété",
+              "tarif nettoyage escalier par étage",
+            ],
+            variables: ["Nombre d'étages", "Prix / passage", "Temps repère"],
+            unitText: "EUR",
+          }),
         ]}
       />
 
@@ -184,7 +199,7 @@ export default function Page() {
           </li>
         </ul>
 
-        <PullQuote cite="Marc Leroy, consultant exploitation propreté">
+        <PullQuote cite={`${author.name}, ${author.role}`}>
           Quel que soit le format affiché — au mois, au passage ou par étage — un devis de cage
           d&apos;escalier se ramène toujours à un temps de présence multiplié par un taux horaire.
           C&apos;est cette grandeur qu&apos;un syndic doit savoir reconstituer.

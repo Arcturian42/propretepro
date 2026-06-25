@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { buildMetadata } from "@/lib/seo";
 import { SchemaMarkup } from "@/components/seo/SchemaMarkup";
-import { articleSchema, faqSchema, breadcrumbSchema } from "@/lib/schema";
+import { articleSchema, faqSchema, breadcrumbSchema, howToSchema } from "@/lib/schema";
 import { ArticleLayout } from "@/components/layout/ArticleLayout";
 import { AnswerBox, KeyTakeaways, DefinitionBox, FactTable, InfoCallout, PullQuote } from "@/components/sections/GeoBlocks";
 import { SourcesBox } from "@/components/sections/SourcesBox";
@@ -110,6 +110,33 @@ export default function Page() {
           }),
           faqSchema(FAQ),
           breadcrumbSchema(CRUMBS),
+          howToSchema({
+            name: "Calculer la révision de prix d'un contrat de nettoyage",
+            description:
+              "Appliquer une formule de révision de prix indexée sur un indice de coût du travail pour réajuster le tarif d'un contrat de nettoyage.",
+            steps: [
+              {
+                name: "Poser la formule de révision",
+                text: "Reprendre la formule P1 = P0 × (a + b × I1 / I0), où P0 est le prix initial, P1 le prix révisé, a la part fixe et b la part variable indexée (avec a + b = 1).",
+              },
+              {
+                name: "Fixer la part fixe et la part variable",
+                text: "Définir la part fixe (a) et la part variable (b) selon le poids de la main-d'œuvre, par exemple a = 0,15 et b = 0,85 pour une prestation où la main-d'œuvre domine le coût.",
+              },
+              {
+                name: "Relever l'évolution de l'indice",
+                text: "Mesurer l'évolution de l'indice de coût du travail entre la date initiale et la date de révision, par exemple un indice passant de 100 à 103, soit I1 / I0 = 1,03.",
+              },
+              {
+                name: "Calculer le coefficient de révision",
+                text: "Calculer le coefficient de révision : 0,15 + 0,85 × 1,03 = 1,0255.",
+              },
+              {
+                name: "Appliquer le coefficient au prix initial",
+                text: "Multiplier le prix initial par le coefficient pour obtenir le prix révisé : 4 800 € × 1,0255 ≈ 4 922 €.",
+              },
+            ],
+          }),
         ]}
       />
 

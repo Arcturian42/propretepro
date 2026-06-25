@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { buildMetadata } from "@/lib/seo";
 import { SchemaMarkup } from "@/components/seo/SchemaMarkup";
-import { articleSchema, faqSchema, breadcrumbSchema } from "@/lib/schema";
+import { articleSchema, faqSchema, breadcrumbSchema, datasetSchema } from "@/lib/schema";
 import { ArticleLayout } from "@/components/layout/ArticleLayout";
 import {
   AnswerBox,
@@ -106,6 +106,17 @@ export default function Page() {
           }),
           faqSchema(FAQ),
           breadcrumbSchema(CRUMBS),
+          datasetSchema({
+            name: "Prix du nettoyage d'école et de collectivité en 2026 (France)",
+            description:
+              "Fourchettes de prix HT au m² par passage du nettoyage d'écoles, crèches et bâtiments de collectivités sur le marché français en 2026, par type d'établissement.",
+            path: PATH,
+            dateModified: article.dateModified,
+            temporalCoverage: "2026",
+            keywords: ["prix nettoyage école", "tarif nettoyage collectivité", "nettoyage crèche"],
+            variables: ["Type d'établissement", "Prix / m² / passage", "Fréquence type"],
+            unitText: "EUR",
+          }),
         ]}
       />
 
@@ -172,6 +183,12 @@ export default function Page() {
           cadences proches de celles de grands locaux tertiaires cloisonnés.
         </p>
 
+        <PullQuote cite={`${author.name}, ${author.role}`}>
+          Plus le public accueilli est jeune et vulnérable, plus le protocole de désinfection est
+          exigeant : c&apos;est ce qui fait grimper le prix au m² d&apos;une crèche ou d&apos;une
+          maternelle au-dessus de celui d&apos;un collège.
+        </PullQuote>
+
         <h2 id="contraintes">Les contraintes spécifiques qui font le prix</h2>
         <p>
           Le surcoût des établissements scolaires et de collectivités ne tient pas au hasard : il
@@ -203,7 +220,7 @@ export default function Page() {
           </li>
         </ul>
 
-        <PullQuote cite="Marc Leroy, consultant exploitation & achats propreté">
+        <PullQuote cite={`${author.name}, ${author.role}`}>
           Sur un marché scolaire, le prix au m² le plus bas n&apos;est presque jamais le plus
           intéressant : ce qui se paie, c&apos;est la régularité de la désinfection et la fiabilité
           des équipes hors présence des enfants.

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { buildMetadata } from "@/lib/seo";
 import { SchemaMarkup } from "@/components/seo/SchemaMarkup";
-import { articleSchema, faqSchema, breadcrumbSchema } from "@/lib/schema";
+import { articleSchema, faqSchema, breadcrumbSchema, datasetSchema } from "@/lib/schema";
 import { ArticleLayout } from "@/components/layout/ArticleLayout";
 import {
   AnswerBox,
@@ -106,6 +106,21 @@ export default function Page() {
           }),
           faqSchema(FAQ),
           breadcrumbSchema(CRUMBS),
+          datasetSchema({
+            name: "Prix de la remise en état en nettoyage en 2026 (France)",
+            description:
+              "Fourchettes de prix HT 2026 d'une remise en état (nettoyage approfondi) sur le marché français : 2 à 8 €/m² ou 25 à 45 €/h selon la prestation (décapage, métallisation, cristallisation, shampouinage, lessivage).",
+            path: PATH,
+            dateModified: article.dateModified,
+            temporalCoverage: "2026",
+            keywords: [
+              "prix remise en état nettoyage",
+              "tarif nettoyage approfondi m2",
+              "décapage métallisation sol",
+            ],
+            variables: ["Prestation", "Prix / m²", "Repère horaire"],
+            unitText: "EUR",
+          }),
         ]}
       />
 
@@ -189,7 +204,7 @@ export default function Page() {
           m².
         </p>
 
-        <PullQuote cite="Marc Leroy, consultant exploitation propreté">
+        <PullQuote cite={`${author.name}, ${author.role}`}>
           Une remise en état facturée comme de l&apos;entretien courant est mathématiquement
           impossible : la cadence d&apos;un décapage est cinq à huit fois plus lente qu&apos;un
           passage de routine.
@@ -214,6 +229,12 @@ export default function Page() {
             ["Lessivage murs / plafonds", "3 – 7 €", "25 – 40 €/h"],
           ]}
         />
+        <PullQuote cite={`${author.name}, ${author.role}`}>
+          Si le décapage-métallisation et la cristallisation de marbre figurent en haut de la
+          fourchette, c&apos;est qu&apos;ils additionnent un matériel spécifique, un temps de
+          séchage entre couches et un vrai savoir-faire technique.
+        </PullQuote>
+
         <p>
           Le décapage-métallisation et la cristallisation de marbre sont les plus chers : ils
           combinent un matériel spécifique (monobrosse, disques, émulsions, poudres de

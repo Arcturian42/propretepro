@@ -12,6 +12,7 @@ Language: fr
 Summary: https://propretepro.fr/ai/summary.json
 Faq: https://propretepro.fr/ai/faq.json
 Llms: https://propretepro.fr/llms.txt
+Llms-full: https://propretepro.fr/llms-full.txt
 Sitemap: https://propretepro.fr/sitemap.xml
 
 # Usage
