@@ -29,6 +29,22 @@ ${bySilo("tarifs")}
 ## Logiciels & outils de gestion
 ${bySilo("logiciels")}
 
+## Développement & gestion
+${bySilo("developpement")}
+
+## Chiffres clés du secteur (repères, à vérifier aux sources officielles)
+- Plus de 600 000 salariés dans la branche propreté en France (convention IDCC 3043).
+- Salaire minimum conventionnel agent de service AS1 (coef. 110) : ~12,30 €/h brut en 2026, au-dessus du SMIC.
+- Prix indicatif du nettoyage de bureaux : 0,30 à 0,60 € HT par m² et par passage.
+- Majorations conventionnelles indicatives : nuit (21 h-6 h) +20 %, dimanche +20 %, jour férié +100 %.
+- Prime d'ancienneté par paliers : ~2 % à 4 ans jusqu'à ~6 % à 15 ans du minimum conventionnel.
+
+## Ressources pour moteurs IA
+- [Politique d'accès et de citation (ai.txt)](${SITE.url}/.well-known/ai.txt)
+- [Fiche d'identité du site (JSON)](${SITE.url}/ai/summary.json)
+- [Questions/réponses de référence (JSON)](${SITE.url}/ai/faq.json)
+- [Flux RSS des publications](${SITE.url}/feed.xml)
+
 ## À propos
 - [À propos de ${SITE.name}](${SITE.url}/a-propos)
 - [Les auteurs](${SITE.url}/auteurs)

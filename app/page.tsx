@@ -8,14 +8,24 @@ import {
   Mail,
   FileText,
 } from "lucide-react";
+import type { Metadata } from "next";
 import { LiquidGlassHero } from "@/components/sections/LiquidGlassHero";
 import { NewsletterCTA } from "@/components/sections/NewsletterCTA";
 import { CategoryCard } from "@/components/cards/CategoryCard";
 import { ArticleCard } from "@/components/cards/ArticleCard";
+import { FAQSection } from "@/components/sections/FAQSection";
+import { SchemaMarkup } from "@/components/seo/SchemaMarkup";
 import { Reveal, StaggerGroup, StaggerItem } from "@/components/ui/Reveal";
 import { Badge } from "@/components/ui/Badge";
-import { PILLARS } from "@/lib/site";
+import { PILLARS, SITE } from "@/lib/site";
 import { ARTICLES, POPULAR_RESOURCES } from "@/lib/content";
+import { AI_FAQ } from "@/lib/ai";
+import { faqSchema, itemListSchema } from "@/lib/schema";
+
+export const metadata: Metadata = {
+  // Canonical explicite de la page d'accueil (la plus crawlée par les moteurs IA).
+  alternates: { canonical: SITE.url },
+};
 
 const WHY = [
   {
@@ -48,6 +58,20 @@ export default function HomePage() {
 
   return (
     <>
+      <SchemaMarkup
+        schema={[
+          itemListSchema({
+            name: "Les piliers éditoriaux de PropretéPro",
+            items: PILLARS.map((p) => ({
+              name: p.label,
+              href: p.href,
+              description: p.summary,
+            })),
+          }),
+          faqSchema(AI_FAQ),
+        ]}
+      />
+
       <LiquidGlassHero />
 
       {/* Pillars / bento */}
@@ -233,6 +257,17 @@ export default function HomePage() {
             </StaggerItem>
           ))}
         </StaggerGroup>
+      </section>
+
+      {/* FAQ générale — contenu citable par les moteurs IA (FAQPage JSON-LD ci-dessus). */}
+      <section className="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+        <Reveal className="mb-8 text-center">
+          <Badge tone="teal">Questions fréquentes</Badge>
+          <h2 className="section-heading mt-3 text-2xl sm:text-3xl">
+            L&apos;essentiel sur la propreté en France
+          </h2>
+        </Reveal>
+        <FAQSection items={AI_FAQ} title="Questions fréquentes sur le secteur de la propreté" />
       </section>
 
       <NewsletterCTA />
