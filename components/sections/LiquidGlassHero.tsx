@@ -69,8 +69,9 @@ export function LiquidGlassHero() {
               className="animate-blur-in mt-6 max-w-[620px] text-[18px] leading-[1.55] tracking-[-0.5px]"
               style={{ color: "rgba(15,23,42,0.72)", animationDelay: "0.25s" }}
             >
-              Actualités, guides réglementaires, prix du nettoyage et ressources pratiques pour les
-              entreprises de nettoyage en France.
+              PropretéPro est le média des pros de la propreté : actualités, guides réglementaires
+              (IDCC 3043), prix du nettoyage et ressources pratiques pour les entreprises de
+              nettoyage en France.
             </p>
 
             {/* CTA */}
