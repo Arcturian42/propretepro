@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { buildMetadata } from "@/lib/seo";
 import { SchemaMarkup } from "@/components/seo/SchemaMarkup";
 import { articleSchema, faqSchema, breadcrumbSchema, datasetSchema } from "@/lib/schema";
+import { SourcesBox } from "@/components/sections/SourcesBox";
+import { SOURCES } from "@/lib/sources";
 import { ArticleLayout } from "@/components/layout/ArticleLayout";
 import {
   AnswerBox,
@@ -403,6 +405,8 @@ export default function Page() {
             </Button>
           </div>
         </div>
+        <SourcesBox sources={SOURCES.marchesPublics} />
+
       </ArticleLayout>
 
       <div className="mx-auto max-w-7xl space-y-16 px-4 pb-8 sm:px-6 lg:px-8">

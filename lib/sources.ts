@@ -50,6 +50,57 @@ const S = {
     href: "https://www.impots.gouv.fr",
     publisher: "impots.gouv.fr",
   },
+  // --- Sources sectorielles & tarifs (citabilité GEO des contenus prix) ---
+  insee: {
+    label: "Activités de nettoyage : données et chiffres du secteur (NAF 81.2)",
+    href: "https://www.insee.fr/fr/metadonnees/nafr2/sousClasse/81.21Z",
+    publisher: "INSEE",
+  },
+  fep: {
+    label: "Chiffres clés et observatoire de la branche propreté",
+    href: "https://www.monde-proprete.com",
+    publisher: "Fédération des Entreprises de Propreté (FEP)",
+  },
+  bofipTva: {
+    label: "TVA : taux et règles applicables (BOFiP)",
+    href: "https://bofip.impots.gouv.fr",
+    publisher: "impots.gouv.fr",
+  },
+  tvaTravaux: {
+    label: "TVA applicable aux prestations et travaux",
+    href: "https://entreprendre.service-public.fr/vosdroits/F23567",
+    publisher: "service-public.fr (Entreprendre)",
+  },
+  devisFacture: {
+    label: "Règles du devis et de la facture entre professionnels",
+    href: "https://entreprendre.service-public.fr/vosdroits/F23208",
+    publisher: "service-public.fr (Entreprendre)",
+  },
+  marchesPublics: {
+    label: "Marchés publics : principes, seuils et procédures",
+    href: "https://www.economie.gouv.fr/daj/commande-publique",
+    publisher: "Direction des affaires juridiques (Bercy)",
+  },
+  inrs: {
+    label: "Prévention des risques professionnels dans la propreté",
+    href: "https://www.inrs.fr/metiers/proprete.html",
+    publisher: "INRS",
+  },
+  cnil: {
+    label: "Géolocalisation et badgeage des salariés (RGPD)",
+    href: "https://www.cnil.fr/fr/la-geolocalisation-des-vehicules-des-salaries",
+    publisher: "CNIL",
+  },
+  hasSante: {
+    label: "Hygiène des locaux et bionettoyage en milieu de soins",
+    href: "https://www.has-sante.fr",
+    publisher: "Haute Autorité de Santé",
+  },
+  anil: {
+    label: "Copropriété : fonctionnement et charges",
+    href: "https://www.anil.org",
+    publisher: "ANIL",
+  },
 } as const satisfies Record<string, Source>;
 
 /** Bundles thématiques prêts à passer au composant <SourcesBox />. */
@@ -64,4 +115,15 @@ export const SOURCES = {
   transfert: [S.idcc3043, S.codeTravail],
   classification: [S.idcc3043, S.codeTravail],
   facturation: [S.facturationElec, S.entreprendre],
+  // --- Bundles tarifs & développement ---
+  tarifsSecteur: [S.insee, S.fep],
+  coutRevient: [S.urssaf, S.smic, S.fep],
+  devis: [S.devisFacture, S.fep],
+  tva: [S.tvaTravaux, S.bofipTva],
+  marchesPublics: [S.marchesPublics, S.fep],
+  sante: [S.hasSante, S.fep],
+  securiteHauteur: [S.inrs, S.fep],
+  nettoyageIndustriel: [S.inrs, S.fep],
+  copropriete: [S.anil, S.fep],
+  logiciels: [S.cnil, S.fep],
 } as const satisfies Record<string, Source[]>;
