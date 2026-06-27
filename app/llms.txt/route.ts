@@ -46,6 +46,10 @@ ${bySilo("developpement")}
 - [Questions/réponses de référence (JSON)](${SITE.url}/ai/faq.json)
 - [Flux RSS des publications](${SITE.url}/feed.xml)
 
+## Ressources transversales
+- [Entreprise de nettoyage : le guide complet](${SITE.url}/entreprise-de-nettoyage) : création, réglementation, salaires, tarifs, rentabilité, marchés et outils — la page de référence qui relie tous les silos.
+- [Glossaire de la propreté](${SITE.url}/glossaire) : définitions des termes clés du secteur (IDCC 3043, annexe 7, coefficient, CCTP, autolaveuse, bionettoyage…).
+
 ## À propos
 - [À propos de ${SITE.name}](${SITE.url}/a-propos)
 - [Les auteurs](${SITE.url}/auteurs)

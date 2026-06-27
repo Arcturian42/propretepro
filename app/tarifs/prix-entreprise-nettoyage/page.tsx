@@ -243,7 +243,7 @@ export default function Page() {
           ]}
         />
 
-        <h2 id="logique">Comment se construit le prix d'un contrat</h2>
+        <h2 id="logique">Comment se construit le prix d&apos;un contrat</h2>
         <p>
           Un prestataire sérieux raisonne en trois temps : il estime le <strong>temps de
           nettoyage</strong> à partir d&apos;une cadence (250 à 400 m²/h pour des bureaux), il

@@ -128,12 +128,18 @@ export function articleSchema(args: {
       "@type": "SpeakableSpecification",
       cssSelector: ["h1", ".geo-answer"],
     },
-    author: {
-      "@type": "Person",
-      name: args.author.name,
-      ...(args.author.jobTitle ? { jobTitle: args.author.jobTitle } : {}),
-      ...(args.author.url ? { url: args.author.url } : { url: authorUrlByName(args.author.name) }),
-    },
+    author: (() => {
+      const entry = Object.values(AUTHORS).find((a) => a.name === args.author.name);
+      return {
+        "@type": "Person",
+        name: args.author.name,
+        ...(args.author.jobTitle ? { jobTitle: args.author.jobTitle } : {}),
+        ...(args.author.url ? { url: args.author.url } : { url: authorUrlByName(args.author.name) }),
+        ...(entry?.avatar ? { image: `${SITE.url}${entry.avatar}` } : {}),
+        ...(entry?.sameAs?.length ? { sameAs: entry.sameAs } : {}),
+        ...(entry?.expertise?.length ? { knowsAbout: entry.expertise } : {}),
+      };
+    })(),
     publisher: {
       "@type": "Organization",
       name: SITE.name,
@@ -154,6 +160,8 @@ export function personSchema(args: {
   jobTitle: string;
   description: string;
   knowsAbout?: string[];
+  image?: string;
+  sameAs?: string[];
 }) {
   return {
     "@context": "https://schema.org",
@@ -164,6 +172,8 @@ export function personSchema(args: {
     jobTitle: args.jobTitle,
     description: args.description,
     ...(args.knowsAbout ? { knowsAbout: args.knowsAbout } : {}),
+    ...(args.image ? { image: `${SITE.url}${args.image}` } : {}),
+    ...(args.sameAs && args.sameAs.length ? { sameAs: args.sameAs } : {}),
     worksFor: { "@type": "Organization", name: SITE.name, url: SITE.url },
   };
 }
@@ -196,6 +206,37 @@ export function howToSchema(args: {
       position: i + 1,
       name: s.name,
       text: s.text,
+    })),
+  };
+}
+
+/**
+ * DefinedTermSet — expose un glossaire structuré (entités du secteur) pour aider les
+ * moteurs IA à comprendre et citer les définitions (citabilité GEO « définitions »).
+ */
+export function definedTermSetSchema(args: {
+  name: string;
+  description: string;
+  path: string;
+  terms: { term: string; definition: string; slug: string }[];
+}) {
+  const url = `${SITE.url}${args.path}`;
+  const setId = `${url}#termset`;
+  return {
+    "@context": "https://schema.org",
+    "@type": "DefinedTermSet",
+    "@id": setId,
+    name: args.name,
+    description: args.description,
+    url,
+    inLanguage: "fr-FR",
+    hasDefinedTerm: args.terms.map((t) => ({
+      "@type": "DefinedTerm",
+      "@id": `${url}#${t.slug}`,
+      name: t.term,
+      description: t.definition,
+      url: `${url}#${t.slug}`,
+      inDefinedTermSet: setId,
     })),
   };
 }

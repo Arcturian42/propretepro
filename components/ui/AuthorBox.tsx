@@ -1,9 +1,10 @@
 import Link from "next/link";
+import Image from "next/image";
 import { BadgeCheck } from "lucide-react";
 import type { Author } from "@/lib/content";
 import { formatDateFr } from "@/lib/utils";
 
-/** Encadré auteur E-E-A-T : nom, rôle, mini-bio + dates de publication/mise à jour. */
+/** Encadré auteur E-E-A-T : photo (ou monogramme), nom, rôle, mini-bio + dates. */
 export function AuthorBox({
   author,
   datePublished,
@@ -20,9 +21,19 @@ export function AuthorBox({
 
   return (
     <div className="flex flex-col gap-4 rounded-2xl border border-line bg-white p-5 sm:flex-row sm:items-start">
-      <div className="grid h-14 w-14 shrink-0 place-items-center rounded-full bg-night-grad font-display text-lg font-semibold text-white">
-        {initials}
-      </div>
+      {author.avatar ? (
+        <Image
+          src={author.avatar}
+          alt={`Photo de ${author.name}, ${author.role}`}
+          width={56}
+          height={56}
+          className="h-14 w-14 shrink-0 rounded-full object-cover"
+        />
+      ) : (
+        <div className="grid h-14 w-14 shrink-0 place-items-center rounded-full bg-night-grad font-display text-lg font-semibold text-white">
+          {initials}
+        </div>
+      )}
       <div className="min-w-0">
         <div className="flex items-center gap-1.5">
           <Link

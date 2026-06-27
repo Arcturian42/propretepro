@@ -197,7 +197,7 @@ export default function Page() {
           conditionne le prix : une visite préalable est indispensable pour un chiffrage fiable.
         </InfoCallout>
 
-        <h2 id="prix-m2">Prix au m² selon l'état du chantier</h2>
+        <h2 id="prix-m2">Prix au m² selon l&apos;état du chantier</h2>
         <p>
           Le tarif dépend directement du <strong>niveau de finition</strong> attendu. On distingue
           classiquement trois prestations :

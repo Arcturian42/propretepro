@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import Image from "next/image";
 import { BadgeCheck } from "lucide-react";
 import { buildMetadata } from "@/lib/seo";
 import { SchemaMarkup } from "@/components/seo/SchemaMarkup";
@@ -9,22 +10,6 @@ import { Badge } from "@/components/ui/Badge";
 import { ArticleCard } from "@/components/cards/ArticleCard";
 import { StaggerGroup, StaggerItem } from "@/components/ui/Reveal";
 import { AUTHORS, ARTICLES } from "@/lib/content";
-
-/** Sujets d'expertise (knowsAbout) par auteur, pour le Person schema. */
-const KNOWS_ABOUT: Record<string, string[]> = {
-  "claire-vidal": [
-    "Convention collective propreté IDCC 3043",
-    "Droit social",
-    "Paie et classifications",
-    "URSSAF et cotisations",
-  ],
-  "marc-leroy": [
-    "Tarification du nettoyage",
-    "Coût de revient",
-    "Exploitation propreté",
-    "Achats de prestations",
-  ],
-};
 
 /** Auteurs disposant d'au moins un article publié. */
 function publishedAuthorSlugs(): string[] {
@@ -84,7 +69,9 @@ export default async function AuthorPage({
             name: author.name,
             jobTitle: author.role,
             description: author.bio,
-            knowsAbout: KNOWS_ABOUT[slug],
+            knowsAbout: author.expertise,
+            image: author.avatar,
+            sameAs: author.sameAs,
           }),
           breadcrumbSchema(crumbs),
         ]}
@@ -99,9 +86,20 @@ export default async function AuthorPage({
         <div className="relative mx-auto max-w-3xl px-4 py-10 sm:px-6 lg:py-14">
           <Breadcrumb crumbs={crumbs} />
           <div className="mt-6 flex flex-col gap-5 sm:flex-row sm:items-center">
-            <div className="grid h-20 w-20 shrink-0 place-items-center rounded-2xl bg-night-grad font-display text-2xl font-semibold text-white">
-              {initials}
-            </div>
+            {author.avatar ? (
+              <Image
+                src={author.avatar}
+                alt={`Photo de ${author.name}, ${author.role}`}
+                width={80}
+                height={80}
+                priority
+                className="h-20 w-20 shrink-0 rounded-2xl object-cover"
+              />
+            ) : (
+              <div className="grid h-20 w-20 shrink-0 place-items-center rounded-2xl bg-night-grad font-display text-2xl font-semibold text-white">
+                {initials}
+              </div>
+            )}
             <div>
               <div className="flex items-center gap-2">
                 <h1 className="font-display text-3xl font-semibold text-night-900">{author.name}</h1>
@@ -111,9 +109,9 @@ export default async function AuthorPage({
             </div>
           </div>
           <p className="mt-5 text-lg leading-relaxed text-muted-ink">{author.bio}</p>
-          {KNOWS_ABOUT[slug] && (
+          {author.expertise && (
             <div className="mt-5 flex flex-wrap gap-2">
-              {KNOWS_ABOUT[slug].map((topic) => (
+              {author.expertise.map((topic) => (
                 <Badge key={topic} tone="neutral">
                   {topic}
                 </Badge>
