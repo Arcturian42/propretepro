@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { buildMetadata } from "@/lib/seo";
 import { SchemaMarkup } from "@/components/seo/SchemaMarkup";
 import { articleSchema, faqSchema, breadcrumbSchema } from "@/lib/schema";
+import { SourcesBox } from "@/components/sections/SourcesBox";
+import { SOURCES } from "@/lib/sources";
 import { ArticleLayout } from "@/components/layout/ArticleLayout";
 import { AnswerBox, KeyTakeaways, DefinitionBox, FactTable, InfoCallout, PullQuote } from "@/components/sections/GeoBlocks";
 import { FAQSection } from "@/components/sections/FAQSection";
@@ -333,6 +335,8 @@ export default function Page() {
           <a href="/tarifs/nettoyage-bureaux-m2">prix du nettoyage de bureaux au m²</a> vous aideront à
           fixer des tarifs cohérents avec vos coûts réels.
         </p>
+        <SourcesBox sources={SOURCES.logiciels} />
+
       </ArticleLayout>
 
       <div className="mx-auto max-w-7xl space-y-16 px-4 pb-8 sm:px-6 lg:px-8">
