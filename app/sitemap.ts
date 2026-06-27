@@ -15,6 +15,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     })),
     { url: `${SITE.url}/logiciels`, lastModified: now, changeFrequency: "weekly" as const, priority: 0.7 },
+    { url: `${SITE.url}/entreprise-de-nettoyage`, lastModified: now, changeFrequency: "monthly" as const, priority: 0.9 },
+    { url: `${SITE.url}/glossaire`, lastModified: now, changeFrequency: "monthly" as const, priority: 0.5 },
     { url: `${SITE.url}/auteurs`, lastModified: now, changeFrequency: "monthly" as const, priority: 0.4 },
     { url: `${SITE.url}/a-propos`, lastModified: now, changeFrequency: "yearly" as const, priority: 0.3 },
     { url: `${SITE.url}/mentions-legales`, lastModified: now, changeFrequency: "yearly" as const, priority: 0.2 },

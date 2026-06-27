@@ -210,6 +210,37 @@ export function howToSchema(args: {
   };
 }
 
+/**
+ * DefinedTermSet — expose un glossaire structuré (entités du secteur) pour aider les
+ * moteurs IA à comprendre et citer les définitions (citabilité GEO « définitions »).
+ */
+export function definedTermSetSchema(args: {
+  name: string;
+  description: string;
+  path: string;
+  terms: { term: string; definition: string; slug: string }[];
+}) {
+  const url = `${SITE.url}${args.path}`;
+  const setId = `${url}#termset`;
+  return {
+    "@context": "https://schema.org",
+    "@type": "DefinedTermSet",
+    "@id": setId,
+    name: args.name,
+    description: args.description,
+    url,
+    inLanguage: "fr-FR",
+    hasDefinedTerm: args.terms.map((t) => ({
+      "@type": "DefinedTerm",
+      "@id": `${url}#${t.slug}`,
+      name: t.term,
+      description: t.definition,
+      url: `${url}#${t.slug}`,
+      inDefinedTermSet: setId,
+    })),
+  };
+}
+
 export function breadcrumbSchema(crumbs: { name: string; href: string }[]) {
   return {
     "@context": "https://schema.org",

@@ -95,8 +95,8 @@ export const FOOTER_NAV: { title: string; links: NavItem[] }[] = [
   {
     title: "Ressources",
     links: [
-      { label: "Prix entreprise de nettoyage", href: "/tarifs/prix-entreprise-nettoyage" },
-      { label: "Prix nettoyage fin de chantier", href: "/tarifs/prix-nettoyage-fin-chantier" },
+      { label: "Guide entreprise de nettoyage", href: "/entreprise-de-nettoyage" },
+      { label: "Glossaire de la propreté", href: "/glossaire" },
       { label: "Transfert de personnel (Annexe 7)", href: "/reglementation/transfert-personnel-annexe-7-proprete" },
       { label: "Tous les guides (blog)", href: "/blog" },
     ],

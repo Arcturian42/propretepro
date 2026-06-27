@@ -23,6 +23,8 @@ type ArticleLayoutProps = {
   toc: TocItem[];
   /** Image de couverture (ex. /covers/slug.webp), affichée + utilisée en OG/schema. */
   image?: string;
+  /** Désactive la couverture (pages sans visuel dédié, ex. pages piliers). */
+  noCover?: boolean;
   children: ReactNode;
 };
 
@@ -31,10 +33,10 @@ type ArticleLayoutProps = {
  * corps en colonne lisible (mesure ~70 caractères) et encadré auteur en pied.
  */
 export function ArticleLayout(props: ArticleLayoutProps) {
-  const { crumbs, kicker, title, intro, author, datePublished, dateModified, readMinutes, toc, image, children } = props;
+  const { crumbs, kicker, title, intro, author, datePublished, dateModified, readMinutes, toc, image, noCover, children } = props;
   // Couverture : prop explicite, sinon dérivée du slug (dernier fil d'Ariane) → /covers/{slug}.webp
   const slug = crumbs[crumbs.length - 1]?.href.split("/").filter(Boolean).pop();
-  const cover = image ?? (slug ? `/covers/${slug}.webp` : undefined);
+  const cover = noCover ? undefined : image ?? (slug ? `/covers/${slug}.webp` : undefined);
 
   return (
     <article className="relative">
