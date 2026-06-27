@@ -26,6 +26,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: new Date(a.dateModified),
     changeFrequency: "monthly",
     priority: 0.9,
+    // Image sitemap : aide l'indexation des couvertures dans Google Images.
+    images: [`${SITE.url}/covers/${a.slug}.webp`],
   }));
 
   const authorPages: MetadataRoute.Sitemap = Object.keys(AUTHORS)

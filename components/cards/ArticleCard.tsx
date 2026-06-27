@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowUpRight, Clock } from "lucide-react";
 import type { Article } from "@/lib/content";
 import { AUTHORS } from "@/lib/content";
@@ -18,12 +19,12 @@ export function ArticleCard({ article }: { article: Article }) {
     >
       {/* Vignette de couverture */}
       <div className="relative aspect-[1200/630] w-full overflow-hidden bg-night-900">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
+        <Image
           src={`/covers/${slug}.webp`}
           alt={`Illustration : ${article.title}`}
-          loading="lazy"
-          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+          fill
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 360px"
+          className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"
         />
         <div className="absolute left-3 top-3 flex items-center gap-2">
           {article.badge && <Badge tone={article.badge.tone}>{article.badge.label}</Badge>}

@@ -128,12 +128,18 @@ export function articleSchema(args: {
       "@type": "SpeakableSpecification",
       cssSelector: ["h1", ".geo-answer"],
     },
-    author: {
-      "@type": "Person",
-      name: args.author.name,
-      ...(args.author.jobTitle ? { jobTitle: args.author.jobTitle } : {}),
-      ...(args.author.url ? { url: args.author.url } : { url: authorUrlByName(args.author.name) }),
-    },
+    author: (() => {
+      const entry = Object.values(AUTHORS).find((a) => a.name === args.author.name);
+      return {
+        "@type": "Person",
+        name: args.author.name,
+        ...(args.author.jobTitle ? { jobTitle: args.author.jobTitle } : {}),
+        ...(args.author.url ? { url: args.author.url } : { url: authorUrlByName(args.author.name) }),
+        ...(entry?.avatar ? { image: `${SITE.url}${entry.avatar}` } : {}),
+        ...(entry?.sameAs?.length ? { sameAs: entry.sameAs } : {}),
+        ...(entry?.expertise?.length ? { knowsAbout: entry.expertise } : {}),
+      };
+    })(),
     publisher: {
       "@type": "Organization",
       name: SITE.name,
@@ -154,6 +160,8 @@ export function personSchema(args: {
   jobTitle: string;
   description: string;
   knowsAbout?: string[];
+  image?: string;
+  sameAs?: string[];
 }) {
   return {
     "@context": "https://schema.org",
@@ -164,6 +172,8 @@ export function personSchema(args: {
     jobTitle: args.jobTitle,
     description: args.description,
     ...(args.knowsAbout ? { knowsAbout: args.knowsAbout } : {}),
+    ...(args.image ? { image: `${SITE.url}${args.image}` } : {}),
+    ...(args.sameAs && args.sameAs.length ? { sameAs: args.sameAs } : {}),
     worksFor: { "@type": "Organization", name: SITE.name, url: SITE.url },
   };
 }

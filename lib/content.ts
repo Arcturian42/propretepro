@@ -9,6 +9,12 @@ export type Author = {
   name: string;
   role: string;
   bio: string;
+  /** Photo de l'auteur (ex. /authors/claire-vidal.webp). Si absent → monogramme. */
+  avatar?: string;
+  /** Domaines d'expertise (alimente le Person/Article schema knowsAbout + les tags). */
+  expertise?: string[];
+  /** Profils externes vérifiables (LinkedIn, etc.) pour le sameAs Schema.org (E-E-A-T). */
+  sameAs?: string[];
 };
 
 export const AUTHORS: Record<string, Author> = {
@@ -17,12 +23,26 @@ export const AUTHORS: Record<string, Author> = {
     name: "Claire Vidal",
     role: "Juriste en droit social, spécialiste propreté",
     bio: "12 ans d'expérience sur la convention collective de la propreté (IDCC 3043). Accompagne les entreprises de nettoyage sur la paie, les classifications et les transferts de personnel.",
+    // avatar: "/authors/claire-vidal.webp", // ← déposer la photo dans /public/authors/ puis décommenter
+    expertise: [
+      "Convention collective propreté IDCC 3043",
+      "Droit social",
+      "Paie et classifications",
+      "URSSAF et cotisations",
+    ],
   },
   "marc-leroy": {
     slug: "marc-leroy",
     name: "Marc Leroy",
     role: "Consultant exploitation & achats propreté",
     bio: "Ancien responsable d'exploitation dans un groupe de multiservices. Analyse les structures de coûts, les tarifs et la rentabilité des prestations de nettoyage.",
+    // avatar: "/authors/marc-leroy.webp", // ← déposer la photo dans /public/authors/ puis décommenter
+    expertise: [
+      "Tarification du nettoyage",
+      "Coût de revient",
+      "Exploitation propreté",
+      "Achats de prestations",
+    ],
   },
 };
 

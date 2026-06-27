@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { buildMetadata } from "@/lib/seo";
 import { InstitutionalShell } from "@/components/layout/InstitutionalShell";
 import { SchemaMarkup } from "@/components/seo/SchemaMarkup";
@@ -109,9 +110,9 @@ export default function Page() {
         <h2>Nos auteurs</h2>
         <p>
           Nos contenus sont signés par des spécialistes du secteur :{" "}
-          <a href="/auteurs/claire-vidal">Claire Vidal</a>, juriste en droit social spécialiste de la
-          propreté, et <a href="/auteurs/marc-leroy">Marc Leroy</a>, consultant exploitation et achats.
-          Retrouvez l&apos;ensemble de <a href="/auteurs">nos auteurs</a> et leurs domaines
+          <Link href="/auteurs/claire-vidal">Claire Vidal</Link>, juriste en droit social spécialiste de la
+          propreté, et <Link href="/auteurs/marc-leroy">Marc Leroy</Link>, consultant exploitation et achats.
+          Retrouvez l&apos;ensemble de <Link href="/auteurs">nos auteurs</Link> et leurs domaines
           d&apos;expertise.
         </p>
 
